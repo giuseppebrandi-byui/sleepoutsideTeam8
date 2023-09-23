@@ -3,7 +3,7 @@ import { findProductById } from "./productData.mjs";
 
 function addProductToCart(product) {
   var cart = getLocalStorage("so-cart");
-  cart = (cart) ? getLocalStorage("so-cart") : [];
+  cart = cart ? getLocalStorage("so-cart") : [];
   cart.push(product);
   setLocalStorage("so-cart", cart);
 }
@@ -19,12 +19,10 @@ document
   .getElementById("addToCart")
   .addEventListener("click", addToCartHandler);
 
-
 function cartCounter() {
   var cart = getLocalStorage("so-cart");
-  cart = (cart) ? getLocalStorage("so-cart") : [];
-  var count = cart.length; 
-  console.log(count);
+  cart = cart ? getLocalStorage("so-cart") : [];
+  var count = cart.length;
   document.getElementById("count").innerText = count;
 }
 cartCounter();
