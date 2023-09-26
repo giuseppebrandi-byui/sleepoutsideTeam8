@@ -1,7 +1,7 @@
 import { getLocalStorage } from "./utils.mjs";
 
 function renderCartContents() {
-  var cartItems = getLocalStorage("so-cart");
+  let cartItems = getLocalStorage("so-cart");
   if (cartItems === null) {
     cartItems = [];
   }
@@ -10,8 +10,8 @@ function renderCartContents() {
 }
 
 function cartItemTemplate(item) {
-  if (item !== null) { 
-  const newItem = `<li class="cart-card divider">
+  if (item !== null) {
+    const newItem = `<li class="cart-card divider">
     <a href="#" class="cart-card__image">
       <img
         src="${item.Image}"
@@ -25,9 +25,9 @@ function cartItemTemplate(item) {
     <p class="cart-card__quantity">qty: 1</p>
     <p class="cart-card__price">$${item.FinalPrice}</p>
   </li>`;
-  
-  return newItem;
-}
+
+    return newItem;
+  }
 }
 function cartCounter() {
   var cart = getLocalStorage("so-cart");
