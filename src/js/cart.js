@@ -7,8 +7,7 @@ function renderCartContents() {
 }
 
 function cartItemTemplate(item) {
-  if (item !== null) {
-    const newItem = `<li class="cart-card divider">
+  const newItem = `<li class="cart-card divider">
     <a href="#" class="cart-card__image">
       <img
         src="${item.Image}"
@@ -23,15 +22,5 @@ function cartItemTemplate(item) {
     <p class="cart-card__price">$${item.FinalPrice}</p>
   </li>`;
 
-    return newItem;
-  }
+  return newItem;
 }
-
-// function cartCounter() {
-//   let cart = getLocalStorage("so-cart");
-//   cart = cart ? getLocalStorage("so-cart") : [];
-//   count = cart.length;
-//   document.getElementById("count").innerText = count;
-// }
-// renderCartContents();
-// cartCounter();

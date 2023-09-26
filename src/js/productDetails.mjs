@@ -28,23 +28,3 @@ function renderProductDetails() {
     product.DescriptionHtmlSimple;
   document.querySelector("#addToCart").dataset.id = product.Id;
 }
-
-// function cartCounter() {
-//   let counter = 0;
-//   let cart = [getLocalStorage("so-cart")];
-//   if (cart.length > 0) {
-//     counter = cart.length;
-//     document.getElementById("count").innerText = counter;
-//   }
-// }
-
-function cartCounter() {
-  let counter = 0;
-  let cart = [getLocalStorage("so-cart")];
-  if (addToCart) {
-    cart.push(getLocalStorage("so-cart"));
-  }
-  // cart = cart ? getLocalStorage("so-cart") : {};
-  // var count = cart.length;
-  // document.getElementById("count").innerText = count;
-}
