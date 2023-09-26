@@ -1,7 +1,7 @@
 import { getLocalStorage } from "./utils.mjs";
 
 function renderCartContents() {
-  var cartItems = getLocalStorage("so-cart");
+  let cartItems = getLocalStorage("so-cart");
   if (cartItems === null) {
     cartItems = [];
   }
