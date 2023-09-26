@@ -1,5 +1,5 @@
 import { findProductById } from "./productData.mjs";
-import { setLocalStorage } from "./utils.mjs";
+import { getLocalStorage, setLocalStorage } from "./utils.mjs";
 
 let product = {};
 
@@ -12,7 +12,11 @@ export default async function productDetails(productId) {
   document.getElementById("addToCart").addEventListener("click", addToCart);
 }
 function addToCart() {
-  setLocalStorage("so-cart", product);
+  let cart = getLocalStorage("so-cart");
+  cart = cart ? getLocalStorage("so-cart") : [];
+  cart.push(product);
+  setLocalStorage("so-cart", cart);
+  cartCounter();
 }
 function renderProductDetails() {
   document.querySelector("#productName").innerText = product.Brand.Name;
@@ -28,10 +32,10 @@ function renderProductDetails() {
   document.querySelector("#addToCart").dataset.id = product.Id;
 }
 
-// function cartCounter() {
-//   var cart = getLocalStorage("so-cart");
-//   cart = cart ? getLocalStorage("so-cart") : [];
-//   var count = cart.length;
-//   document.getElementById("count").innerText = count;
-// }
-// cartCounter();
+function cartCounter() {
+  let cart = getLocalStorage("so-cart");
+  cart = cart ? getLocalStorage("so-cart") : [];
+  let count = cart.length;
+  document.getElementById("count").innerText = count;
+}
+cartCounter();

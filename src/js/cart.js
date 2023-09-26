@@ -2,15 +2,13 @@ import { getLocalStorage } from "./utils.mjs";
 
 function renderCartContents() {
   let cartItems = getLocalStorage("so-cart");
-  if (cartItems === null) {
-    cartItems = [];
-  }
+  
   const htmlItems = cartItems.map((item) => cartItemTemplate(item));
   document.querySelector(".product-list").innerHTML = htmlItems.join("");
 }
 
 function cartItemTemplate(item) {
-  if (item !== null) {
+  
     const newItem = `<li class="cart-card divider">
     <a href="#" class="cart-card__image">
       <img
@@ -27,12 +25,12 @@ function cartItemTemplate(item) {
   </li>`;
 
     return newItem;
-  }
+  
 }
 function cartCounter() {
-  var cart = getLocalStorage("so-cart");
+  let cart = getLocalStorage("so-cart");
   cart = cart ? getLocalStorage("so-cart") : [];
-  var count = cart.length;
+  let count = cart.length;
   document.getElementById("count").innerText = count;
 }
 renderCartContents();
