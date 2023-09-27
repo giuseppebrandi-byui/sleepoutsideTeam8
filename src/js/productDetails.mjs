@@ -16,7 +16,9 @@ function addToCart() {
   cart = cart ? getLocalStorage("so-cart") : [];
   cart.push(product);
   setLocalStorage("so-cart", cart);
+  cartCounter();
 }
+
 function renderProductDetails() {
   document.querySelector("#productName").innerText = product.Brand.Name;
   document.querySelector("#productNameWithoutBrand").innerText =
@@ -31,10 +33,10 @@ function renderProductDetails() {
   document.querySelector("#addToCart").dataset.id = product.Id;
 }
 
-// function cartCounter() {
-//   let cart = getLocalStorage("so-cart");
-//   cart = cart ? getLocalStorage("so-cart") : [];
-//   let count = cart.length;
-//   document.getElementById("count").innerText = count;
-// }
-// cartCounter();
+function cartCounter() {
+  let cart = getLocalStorage("so-cart");
+  cart = cart ? getLocalStorage("so-cart") : [];
+  let count = cart.length;
+  document.getElementById("count").innerText = count;
+}
+cartCounter();
