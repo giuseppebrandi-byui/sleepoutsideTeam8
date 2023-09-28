@@ -1,11 +1,12 @@
-import { getLocalStorage } from "./utils.mjs";
+import { getLocalStorage, setLocalStorage } from "./utils.mjs";
+
 
 function renderCartContents() {
   let cartItems = getLocalStorage("so-cart");
-
   const htmlItems = cartItems.map((item) => cartItemTemplate(item));
   document.querySelector(".product-list").innerHTML = htmlItems.join("");
 }
+
 
 function cartItemTemplate(item) {
   const newItem = `<li class="cart-card divider">
@@ -19,12 +20,15 @@ function cartItemTemplate(item) {
       <h2 class="card__name">${item.Name}</h2>
     </a>
     <p class="cart-card__color">${item.Colors[0].ColorName}</p>
+    <span class="cart-card__remover" id="${item.Id}">&#10006</span>
     <p class="cart-card__quantity">qty: 1</p>
     <p class="cart-card__price">$${item.FinalPrice}</p>
   </li>`;
-
+  
   return newItem;
+  
 }
+
 function cartCounter() {
   let cart = getLocalStorage("so-cart");
   cart = cart ? getLocalStorage("so-cart") : [];
@@ -33,3 +37,15 @@ function cartCounter() {
 }
 renderCartContents();
 cartCounter();
+
+
+
+function removeProduct(item) {
+  let cart = getLocalStorage("so-cart");
+  let product = cart.indexOf(item);
+  if (cart == item) {
+    cart.splice(product, 1);
+  }
+  setLocalStorage("so-cart", cart);
+  renderCartContents();
+}
