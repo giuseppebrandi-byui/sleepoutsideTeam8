@@ -10,7 +10,7 @@ fetch("../alert.json")
     data.forEach((post) => {
       section.insertAdjacentHTML(
         "beforeend",
-        `<p style="background:${post.background}; color:${post.color}; padding:.5rem">${post.message}</p>`
+        `<p style="background:${post.background}; color:${post.color}; padding:.3rem">${post.message}</p>`
       );
     });
   });

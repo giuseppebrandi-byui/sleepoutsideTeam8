@@ -1,12 +1,12 @@
 [
   {
-    "message": "This is only a test",
-    "background": "darkblue",
-    "color": "white"
+    "message": "Warning! We're currently carrying out maintenance, some features may not work correctly.",
+    "background": "#FEEFB3",
+    "color": "#9F6000"
   },
   {
-    "message": "This is only a test",
-    "background": "lightblue",
-    "color": "black"
+    "message": "Here's some information you may find useful!",
+    "background": "#BDE5F8",
+    "color": "#00529B"
   }
 ]
