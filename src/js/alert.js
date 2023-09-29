@@ -6,7 +6,6 @@ main.prepend(section);
 fetch("../alert.json")
   .then((res) => res.json())
   .then((data) => {
-    // console.log(data);
     data.forEach((post) => {
       section.insertAdjacentHTML(
         "beforeend",
@@ -14,3 +13,11 @@ fetch("../alert.json")
       );
     });
   });
+
+// Remove alert
+document.addEventListener("click", function (e) {
+  if (e.target.className == "closeBtn") {
+    let p = e.target.parentNode;
+    section.removeChild(p);
+  }
+});
