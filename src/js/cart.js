@@ -5,13 +5,9 @@ function renderCartContents() {
   cartItems = cartItems ? getLocalStorage("so-cart") : [];
   const htmlItems = cartItems.map((item) => cartItemTemplate(item));
   document.querySelector(".product-list").innerHTML = htmlItems.join("");
-<<<<<<< HEAD
   document
     .getElementById("cart-card__remover")
     .addEventListener("click", removeProduct());
-=======
-document.getElementById("cart-card__remover").addEventListener("click", removeProduct);
->>>>>>> b3680d33c8f2b9ba707f1062e893ae0105a7b317
 }
 
 function cartItemTemplate(item) {
