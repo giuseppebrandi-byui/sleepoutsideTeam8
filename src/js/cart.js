@@ -5,9 +5,9 @@ function renderCartContents() {
   cartItems = cartItems ? getLocalStorage("so-cart") : [];
   const htmlItems = cartItems.map((item) => cartItemTemplate(item));
   document.querySelector(".product-list").innerHTML = htmlItems.join("");
-  document
-    .getElementById("cart-card__remover")
-    .addEventListener("click", removeProduct());
+  // document
+  //   .getElementById("cart-card__remover")
+  //   .addEventListener("click", removeProduct());
 }
 
 function cartItemTemplate(item) {
