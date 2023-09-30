@@ -3,7 +3,7 @@ const section = document.createElement("section");
 section.className = "alert-list";
 main.prepend(section);
 
-fetch("../alert.json")
+fetch("/json/alert.json")
   .then((res) => res.json())
   .then((data) => {
     data.forEach((post) => {
