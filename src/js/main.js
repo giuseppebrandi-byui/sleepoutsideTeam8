@@ -1,4 +1,5 @@
 import { getLocalStorage } from "./utils.mjs";
+import productList from "./productList.mjs";
 
 function cartCounter() {
   let cart = getLocalStorage("so-cart");
@@ -7,3 +8,5 @@ function cartCounter() {
   document.getElementById("count").innerText = count;
 }
 cartCounter();
+
+productList(".product-list", "tents");
