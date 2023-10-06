@@ -145,6 +145,9 @@ button {
   font-family: "Arial", sans-serif;
   font-weight: bold;
 }
+.cart-footer.hide {
+  display: none;
+}
 /* End cart icon styles */
 
 .mission {
