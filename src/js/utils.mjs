@@ -39,9 +39,8 @@ export function renderListWithTemplate(
   if (clear) {
     parentElement.innerHTML = "";
   }
-
-  const htmlStrings = list.map(templateFn);
-  parentElement.insertAdjacentHTML(position, htmlStrings.join(""));
+  const htmlString = list.map(templateFn);
+  parentElement.insertAdjacentHTML(position, htmlString.join(""));
 }
 
 export function displayCartQuantityIndicator() {
