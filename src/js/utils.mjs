@@ -43,8 +43,8 @@ export function renderListWithTemplate(
   parentElement.insertAdjacentHTML(position, htmlString.join(""));
 }
 
+const span = document.querySelector("#count");
 export function displayCartQuantityIndicator() {
-  const span = document.querySelector("#count");
   span.classList.add("count");
 }
 
@@ -55,5 +55,8 @@ export function cartCounter() {
   if (count > 0) {
     displayCartQuantityIndicator();
     document.getElementById("count").innerText = count;
+  } else {
+    document.getElementById("count").innerText = "";
+    span.classList.remove("count");
   }
 }
