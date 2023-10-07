@@ -1,4 +1,4 @@
-import { getLocalStorage, setLocalStorage } from "./utils.mjs";
+import { getLocalStorage, setLocalStorage, cartCounter } from "./utils.mjs";
 
 function renderCartContents() {
   let cartItems = getLocalStorage("so-cart");
@@ -43,13 +43,6 @@ function cartItemTemplate(item) {
   return newItem;
 }
 
-function cartCounter() {
-  let cart = getLocalStorage("so-cart");
-  cart = cart ? getLocalStorage("so-cart") : [];
-  let count = cart.length;
-  document.getElementById("count").innerText = count;
-}
-
 function cartTotal() {
   //calling localStorage to see if there is anything in cart and then adding to an array
   let total = getLocalStorage("so-cart");
@@ -70,5 +63,5 @@ function cartTotal() {
 }
 
 renderCartContents();
-cartCounter();
 cartTotal();
+cartCounter();
