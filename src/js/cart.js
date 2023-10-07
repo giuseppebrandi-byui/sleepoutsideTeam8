@@ -67,7 +67,6 @@ function cartTotal() {
     cartTotalEl.classList.remove("hide");
     cartTotalEl.innerText = `Total: $${totalCart}`;
   }
-  
 }
 
 renderCartContents();
