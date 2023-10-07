@@ -49,5 +49,27 @@ function cartCounter() {
   let count = cart.length;
   document.getElementById("count").innerText = count;
 }
+
+function cartTotal() {
+  //calling localStorage to see if there is anything in cart and then adding to an array
+  let total = getLocalStorage("so-cart");
+  total = total ? getLocalStorage("so-cart") : [];
+  //setting the cart total to zero
+  let totalCart = 0;
+  //looping through to make sure that it adds all items in localStorage to add their final prices
+  for (let i = 0; i < total.length; i++) {
+    let items = total[i];
+    totalCart += items.FinalPrice;
+  }
+  //checking the total in my cart. If not 0, then display the total of the cart
+  if (totalCart > 0) {
+    const cartTotalEl = document.querySelector(".cart-footer");
+    cartTotalEl.classList.remove("hide");
+    cartTotalEl.innerText = `Total: $${totalCart}`;
+  }
+  
+}
+
 renderCartContents();
 cartCounter();
+cartTotal();
