@@ -109,6 +109,9 @@ button {
 .cart:hover svg {
   fill: gray;
 }
+span:hover {
+  cursor: pointer;
+}
 .count {
   position: absolute;
   top: 8px;
