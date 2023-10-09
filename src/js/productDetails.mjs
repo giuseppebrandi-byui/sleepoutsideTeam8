@@ -1,5 +1,5 @@
 import { findProductById } from "./productData.mjs";
-import { getLocalStorage, setLocalStorage } from "./utils.mjs";
+import { getLocalStorage, setLocalStorage, cartCounter } from "./utils.mjs";
 
 // Grab a reference to the cart button, the h2 element, and the product details
 // section
@@ -59,10 +59,4 @@ function renderProductDetails() {
   document.querySelector("#addToCart").dataset.id = product.Id;
 }
 
-function cartCounter() {
-  let cart = getLocalStorage("so-cart");
-  cart = cart ? getLocalStorage("so-cart") : [];
-  let count = cart.length;
-  document.getElementById("count").innerText = count;
-}
 cartCounter();

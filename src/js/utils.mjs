@@ -30,15 +30,33 @@ export function getParam(param) {
 }
 
 export function renderListWithTemplate(
-  templateFn, 
-  parentElement, 
-  list, 
-  position = "afterbegin", 
-  clear = true) {
+  templateFn,
+  parentElement,
+  list,
+  position = "afterbegin",
+  clear = true
+) {
   if (clear) {
     parentElement.innerHTML = "";
   }
-  
-  const htmlStrings = list.map(templateFn);
-  parentElement.insertAdjacentHTML(position, htmlStrings.join(""));
+  const htmlString = list.map(templateFn);
+  parentElement.insertAdjacentHTML(position, htmlString.join(""));
+}
+
+const span = document.querySelector("#count");
+export function displayCartQuantityIndicator() {
+  span.classList.add("count");
+}
+
+export function cartCounter() {
+  let cart = getLocalStorage("so-cart");
+  cart = cart ? getLocalStorage("so-cart") : [];
+  let count = cart.length;
+  if (count > 0) {
+    displayCartQuantityIndicator();
+    document.getElementById("count").innerText = count;
+  } else {
+    document.getElementById("count").innerText = "";
+    span.classList.remove("count");
+  }
 }
