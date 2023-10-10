@@ -36,27 +36,69 @@ export function renderListWithTemplate(
   position = "afterbegin",
   clear = true
 ) {
-  if (clear) {
+  if (clear && parentElement !== null) {
     parentElement.innerHTML = "";
   }
   const htmlString = list.map(templateFn);
-  parentElement.insertAdjacentHTML(position, htmlString.join(""));
+  if (parentElement !== null) {
+    parentElement.insertAdjacentHTML(position, htmlString.join(""));
+  }
 }
 
 const span = document.querySelector("#count");
-export function displayCartQuantityIndicator() {
-  span.classList.add("count");
-}
+// export function displayCartQuantityIndicator() {
+//   span.classList.add("count");
+// }
 
 export function cartCounter() {
   let cart = getLocalStorage("so-cart");
   cart = cart ? getLocalStorage("so-cart") : [];
   let count = cart.length;
-  if (count > 0) {
-    displayCartQuantityIndicator();
-    document.getElementById("count").innerText = count;
-  } else {
-    document.getElementById("count").innerText = "";
-    span.classList.remove("count");
+  // if (count > 0) {
+  //   displayCartQuantityIndicator();
+  //   document.getElementById("count").innerText = count;
+  // } else {
+  //   document.getElementById("count").innerText = "";
+  //   span.classList.remove("count");
+  // }
+}
+
+export async function renderWithTemplate(
+  templateFn,
+  parentElement,
+  data,
+  callback,
+  position = "afterbegin",
+  clear = true
+) {
+  if (clear && parentElement !== null) {
+    parentElement.innerHTML = "";
   }
+  const htmlString = await templateFn(data);
+  if (parentElement !== null) {
+    parentElement.insertAdjacentHTML(position, htmlString);
+  }
+
+  if (callback) {
+    callback(data);
+  }
+}
+
+function loadTemplate(path) {
+  return async function () {
+    const res = await fetch(path);
+    if (res.ok) {
+      const html = await res.text();
+      return html;
+    }
+  };
+}
+
+export function loadHeaderFooter() {
+  const headerTemplateFn = loadTemplate("/partials/header.html");
+  const footerTemplateFn = loadTemplate("/partials/footer.html");
+  const headerEl = document.querySelector("#main-header");
+  const footerEl = document.querySelector("#main-footer");
+  renderWithTemplate(headerTemplateFn, headerEl);
+  renderWithTemplate(footerTemplateFn, footerEl);
 }
