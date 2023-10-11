@@ -131,7 +131,7 @@ button {
 span:hover {
   cursor: pointer;
 }
-.count {
+#count {
   position: absolute;
   top: 8px;
   right: -4px;
@@ -147,6 +147,9 @@ span:hover {
   color: rgb(124, 68, 124);
   font-family: "Arial", sans-serif;
   font-weight: bold;
+}
+#count:empty{
+  display: none;
 }
 .cart-footer.hide {
   display: none;

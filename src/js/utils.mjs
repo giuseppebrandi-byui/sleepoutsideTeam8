@@ -45,23 +45,6 @@ export function renderListWithTemplate(
   }
 }
 
-const span = document.querySelector("#count");
-// export function displayCartQuantityIndicator() {
-//   span.classList.add("count");
-// }
-
-export function cartCounter() {
-  let cart = getLocalStorage("so-cart");
-  cart = cart ? getLocalStorage("so-cart") : [];
-  let count = cart.length;
-  // if (count > 0) {
-  //   displayCartQuantityIndicator();
-  //   document.getElementById("count").innerText = count;
-  // } else {
-  //   document.getElementById("count").innerText = "";
-  //   span.classList.remove("count");
-  // }
-}
 
 export async function renderWithTemplate(
   templateFn,
@@ -78,7 +61,6 @@ export async function renderWithTemplate(
   if (parentElement !== null) {
     parentElement.insertAdjacentHTML(position, htmlString);
   }
-
   if (callback) {
     callback(data);
   }
@@ -102,3 +84,18 @@ export function loadHeaderFooter() {
   renderWithTemplate(headerTemplateFn, headerEl);
   renderWithTemplate(footerTemplateFn, footerEl);
 }
+
+
+export function cartCounter() {
+  let cart = getLocalStorage("so-cart");
+  cart = cart ? getLocalStorage("so-cart") : [];
+  let count = cart.length;
+  const span = document.querySelector("#count");
+  if (count === null) {
+    span.style.display = "none"
+  } else if (count > 0 && span) {
+    span.textContent = count;
+  } 
+    }
+  
+  
