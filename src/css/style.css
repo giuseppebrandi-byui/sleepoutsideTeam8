@@ -148,7 +148,7 @@ span:hover {
   font-family: "Arial", sans-serif;
   font-weight: bold;
 }
-#count:empty{
+#count:empty {
   display: none;
 }
 .cart-footer.hide {

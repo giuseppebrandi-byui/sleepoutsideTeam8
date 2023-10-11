@@ -5,8 +5,6 @@ import {
   cartCounter,
 } from "./utils.mjs";
 
-
-
 function renderCartContents() {
   let cartItems = getLocalStorage("so-cart");
   cartItems = cartItems ? getLocalStorage("so-cart") : [];
