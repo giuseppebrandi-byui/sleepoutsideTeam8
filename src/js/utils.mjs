@@ -45,7 +45,6 @@ export function renderListWithTemplate(
   }
 }
 
-
 export async function renderWithTemplate(
   templateFn,
   parentElement,
@@ -85,17 +84,14 @@ export function loadHeaderFooter() {
   renderWithTemplate(footerTemplateFn, footerEl);
 }
 
-
 export function cartCounter() {
   let cart = getLocalStorage("so-cart");
   cart = cart ? getLocalStorage("so-cart") : [];
   let count = cart.length;
   const span = document.querySelector("#count");
   if (count === null) {
-    span.style.display = "none"
+    span.style.display = "none";
   } else if (count > 0 && span) {
     span.textContent = count;
-  } 
-    }
-  
-  
+  }
+}
