@@ -1,6 +1,5 @@
 import {
   getLocalStorage,
-  setLocalStorage,
   loadHeaderFooter,
   cartCounter,
 } from "./utils.mjs";
@@ -67,8 +66,11 @@ function cartTotal() {
     cartTotalEl.innerText = `Total: $${totalCart}`;
   }
 }
-
-await loadHeaderFooter();
-renderCartContents();
+const headerFooter = async () => {
+    await loadHeaderFooter();
+}
+headerFooter();
+// renderCartContents();
+shoppingCart();
 cartCounter();
 cartTotal();
