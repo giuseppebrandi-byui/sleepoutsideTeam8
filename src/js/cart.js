@@ -67,7 +67,7 @@ function cartTotal() {
   }
 }
 
-loadHeaderFooter();
+await loadHeaderFooter();
 renderCartContents();
 cartCounter();
 cartTotal();

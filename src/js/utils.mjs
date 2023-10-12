@@ -65,7 +65,7 @@ export async function renderWithTemplate(
   }
 }
 
-function loadTemplate(path) {
+async function loadTemplate(path) {
   return async function () {
     const res = await fetch(path);
     if (res.ok) {
@@ -75,13 +75,13 @@ function loadTemplate(path) {
   };
 }
 
-export function loadHeaderFooter() {
-  const headerTemplateFn = loadTemplate("/partials/header.html");
-  const footerTemplateFn = loadTemplate("/partials/footer.html");
+export async function loadHeaderFooter() {
+  const headerTemplateFn = await loadTemplate("/partials/header.html");
+  const footerTemplateFn = await loadTemplate("/partials/footer.html");
   const headerEl = document.querySelector("#main-header");
   const footerEl = document.querySelector("#main-footer");
-  renderWithTemplate(headerTemplateFn, headerEl);
-  renderWithTemplate(footerTemplateFn, footerEl);
+  await renderWithTemplate(headerTemplateFn, headerEl);
+  await renderWithTemplate(footerTemplateFn, footerEl);
 }
 
 export function cartCounter() {
@@ -89,8 +89,12 @@ export function cartCounter() {
   cart = cart ? getLocalStorage("so-cart") : [];
   let count = cart.length;
   const span = document.querySelector("#count");
+  // if (cart == []) {
+  //   console.log(cart);
+  //   span.style.display = "none";
+  // }
   if (count === null) {
-    span.style.display = "none";
+    span.textContent = count;
   } else if (count > 0 && span) {
     span.textContent = count;
   }
