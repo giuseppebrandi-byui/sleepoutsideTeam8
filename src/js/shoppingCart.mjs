@@ -1,9 +1,26 @@
-import { getLocalStorage, renderListWithTemplate } from "./utils.mjs";
+import { getLocalStorage, setLocalStorage, renderListWithTemplate, cartCounter } from "./utils.mjs";
 
 export default function ShoppingCart() {
     const cartItems = getLocalStorage("so-cart");
     const outputEl = document.querySelector(".product-list");
+  renderListWithTemplate(cartItemTemplate, outputEl, cartItems);
+  let value = "";
+  document.addEventListener("click", function (e) {
+    if (e.target.classList.contains("cart-card__remover")) {
+      let clickedOn = e.target.id;
+      cartItems.forEach(item => {
+        if (item.id == clickedOn) {
+          value = cartItems.findIndex((element) => element.Id === clickedOn);
+          return value;
+        }
+      });
+      cartItems.splice(value, 1);
+      setLocalStorage("so-cart", cartItems);
+    }
     renderListWithTemplate(cartItemTemplate, outputEl, cartItems);
+    cartCounter();
+    cartTotal();
+  })
 }
 
 function cartItemTemplate(item) {
@@ -24,4 +41,22 @@ function cartItemTemplate(item) {
     </li>`;
   
     return newItem;
+}
+function cartTotal() {
+  //calling localStorage to see if there is anything in cart and then adding to an array
+  let total = getLocalStorage("so-cart");
+  total = total ? getLocalStorage("so-cart") : [];
+  //setting the cart total to zero
+  const cartTotalEl = document.querySelector(".cart-footer");
+  let totalCart = 0;
+  cartTotalEl.innerText = `Total: $${totalCart}`; 
+  //looping through to make sure that it adds all items in localStorage to add their final prices
+  for (let i = 0; i < total.length; i++) {
+    let items = total[i];
+    totalCart += items.FinalPrice;
   }
+  //checking the total in my cart. If not 0, then display the total of the cart
+  // if (totalCart > 0) {
+  //   cartTotalEl.innerText = `Total: $${totalCart}`;
+  // }
+}

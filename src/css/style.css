@@ -155,7 +155,10 @@ span:hover {
   display: none;
 }
 /* End cart icon styles */
-
+.cart-footer{
+  text-align: right;
+  padding-right: 25px;
+}
 .mission {
   padding: 0 0.5em;
   /* margin: 0.5em 0; */
