@@ -1,8 +1,4 @@
-import {
-  getLocalStorage,
-  loadHeaderFooter,
-  cartCounter,
-} from "./utils.mjs";
+import { getLocalStorage, loadHeaderFooter, cartCounter } from "./utils.mjs";
 import shoppingCart from "./shoppingCart.mjs";
 
 // function renderCartContents() {
@@ -67,8 +63,8 @@ function cartTotal() {
   }
 }
 const headerFooter = async () => {
-    await loadHeaderFooter();
-}
+  await loadHeaderFooter();
+};
 headerFooter();
 // renderCartContents();
 shoppingCart();
