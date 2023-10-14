@@ -17,6 +17,7 @@ export default async function productList(selector, category) {
   const el = document.querySelector(selector);
   const products = await getData(category);
   const selectMenu = document.querySelector("#sort-by");
+
   let selectedProducts = products.filter(
     (product) => product.Id !== "989CG" && product.Id !== "880RT"
   );
@@ -25,7 +26,7 @@ export default async function productList(selector, category) {
   selectMenu.addEventListener("change", () => {
     const selectEl = document.querySelector('select[name="sort-by"]');
     let selectValue = selectEl.value;
-    console.log(selectValue);
+
     if (selectValue === "name") {
       selectedProducts.sort(
         (a, b) => (a.NameWithoutBrand > b.NameWithoutBrand) - 1
@@ -35,6 +36,7 @@ export default async function productList(selector, category) {
         (price1, price2) => price1.FinalPrice - price2.FinalPrice
       );
     }
+
     renderListWithTemplate(productCardTemplate, el, selectedProducts);
   });
 }
