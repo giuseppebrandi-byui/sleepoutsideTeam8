@@ -279,3 +279,11 @@ footer {
   font-size: var(--small-font);
   padding: 1em;
 }
+
+#sort-by {
+  font-size: 1rem;
+  border-radius: 4px;
+  padding: 0.5rem;
+  color: #333333;
+  max-width: 17rem;
+}
