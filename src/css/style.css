@@ -213,6 +213,12 @@ span:hover {
   width: 100%;
 }
 
+.msrp{
+  text-decoration: line-through;
+  text-decoration-color: red;
+  text-decoration-thickness: 2px;
+}
+
 /* Start cart list card styles */
 .cart-card {
   display: grid;
