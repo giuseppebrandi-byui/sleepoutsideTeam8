@@ -3,9 +3,9 @@ import { renderListWithTemplate } from "./utils.mjs";
 
 function productCardTemplate(product) {
   return `<li class="product-card">
-            <a href="product_pages/index.html?product=${product.Id}">
+            <a href="../product_pages/index.html?product=${product.Id}">
               <img
-                src="${product.Image}"
+                src="${product.Images.PrimaryMedium}"
                 alt="${product.Name}"
               />
               <h3 class="card__brand">${product.Brand.Name}</h3>
@@ -24,7 +24,8 @@ export default async function productList(selector, category) {
     (product) => product.Id !== "989CG" && product.Id !== "880RT"
   );
   renderListWithTemplate(productCardTemplate, el, selectedProducts);
-
+  document.querySelector(".title").innerHTML = category;
+  
   selectMenu.addEventListener("change", () => {
     const selectEl = document.querySelector('select[name="sort-by"]');
     let selectValue = selectEl.value;
@@ -40,5 +41,6 @@ export default async function productList(selector, category) {
     }
 
     renderListWithTemplate(productCardTemplate, el, selectedProducts);
+    
   });
 }
