@@ -1,4 +1,4 @@
-import { loadHeaderFooter } from "./utils.mjs";
+import { loadHeaderFooter, getParam } from "./utils.mjs";
 import productList from "./productList.mjs";
 
 const headerFooter = async () => {
@@ -6,4 +6,5 @@ const headerFooter = async () => {
 };
 
 headerFooter();
-productList(".product-list", "tents");
+const category = getParam("category");
+productList(".product-list", category);
