@@ -82,6 +82,8 @@ export async function loadHeaderFooter() {
   const footerEl = document.querySelector("#main-footer");
   await renderWithTemplate(headerTemplateFn, headerEl);
   await renderWithTemplate(footerTemplateFn, footerEl);
+
+  cartCounter();
 }
 
 export function cartCounter() {
@@ -89,10 +91,6 @@ export function cartCounter() {
   cart = cart ? getLocalStorage("so-cart") : [];
   let count = cart.length;
   const span = document.querySelector("#count");
-  // if (cart == []) {
-  //   console.log(cart);
-  //   span.style.display = "none";
-  // }
   if (count === null) {
     span.textContent = count;
   } else if (count > 0 && span) {
