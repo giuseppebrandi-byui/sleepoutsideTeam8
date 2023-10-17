@@ -65,6 +65,7 @@ function cartTotal() {
 const headerFooter = async () => {
   await loadHeaderFooter();
 };
+
 headerFooter();
 // renderCartContents();
 shoppingCart();
