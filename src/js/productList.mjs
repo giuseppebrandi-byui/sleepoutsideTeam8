@@ -3,7 +3,7 @@ import { renderListWithTemplate } from "./utils.mjs";
 
 function productCardTemplate(product) {
   return `<li class="product-card">
-            <a href="../product_pages/index.html?product=${product.Id}">
+            <a href="/product_pages/index.html?product=${product.Id}">
               <img
                 src="${product.Images.PrimaryMedium}"
                 alt="${product.Name}"
@@ -12,7 +12,9 @@ function productCardTemplate(product) {
               <h2 class="card__name">${product.NameWithoutBrand}</h2>
               <p class="msrp">$${product.SuggestedRetailPrice}</p>
               <p class="product-card__price">$${product.FinalPrice}</p></a>
-              <p class="product-card__discount">You save $${(product.SuggestedRetailPrice - product.FinalPrice).toFixed(2)}</li>`;
+              <p class="product-card__discount">You save $${(
+                product.SuggestedRetailPrice - product.FinalPrice
+              ).toFixed(2)}</li>`;
 }
 
 export default async function productList(selector, category) {
@@ -25,7 +27,7 @@ export default async function productList(selector, category) {
   );
   renderListWithTemplate(productCardTemplate, el, selectedProducts);
   document.querySelector(".title").innerHTML = category;
-  
+
   selectMenu.addEventListener("change", () => {
     const selectEl = document.querySelector('select[name="sort-by"]');
     let selectValue = selectEl.value;
@@ -41,6 +43,5 @@ export default async function productList(selector, category) {
     }
 
     renderListWithTemplate(productCardTemplate, el, selectedProducts);
-    
   });
 }
