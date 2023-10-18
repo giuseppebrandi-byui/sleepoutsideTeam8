@@ -287,3 +287,21 @@ footer {
   color: #333333;
   max-width: 17rem;
 }
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  list-style: none;
+  text-align: center;
+}
+
+.product-grid li a {
+  text-decoration: none;
+  color: #333;
+  font-size: 1rem;
+}
+
+.product-grid img {
+  width: 50%;
+}
