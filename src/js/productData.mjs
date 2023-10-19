@@ -25,7 +25,7 @@ export async function getData(category) {
 //   return products.find((item) => item.Id === id);
 // }
 export async function findProductById(id) {
-  const response = await fetch(baseURL + `product/${id}`);
+  const response = await fetch(baseURL + "/" + `product/${id}`);
   const product = await convertToJson(response);
   return product.Result;
 }
