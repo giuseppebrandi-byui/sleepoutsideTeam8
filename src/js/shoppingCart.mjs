@@ -9,7 +9,7 @@ export default function ShoppingCart() {
     if (e.target.classList.contains("cart-card__remover")) {
       let clickedOn = e.target.id;
       cartItems.forEach(item => {
-        if (item.Idd == clickedOn) {
+        if (item.Id == clickedOn) {
           value = cartItems.findIndex((element) => element.Id === clickedOn);
           return value;
         }
