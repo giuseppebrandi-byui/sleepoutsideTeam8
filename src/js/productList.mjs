@@ -6,7 +6,7 @@ function productCardTemplate(product) {
             <a href="../product_pages/index.html?product=${product.Id}">
               <img
                 src="${product.Images.PrimaryMedium}"
-                alt="${product.Name}"
+                alt="Image of ${product.Name}"
               />
               <h3 class="card__brand">${product.Brand.Name}</h3>
               <h2 class="card__name">${product.NameWithoutBrand}</h2>
@@ -16,6 +16,7 @@ function productCardTemplate(product) {
                 product.SuggestedRetailPrice - product.FinalPrice
               ).toFixed(2)}</li>`;
 }
+
 
 export default async function productList(selector, category) {
   const el = document.querySelector(selector);
@@ -45,3 +46,5 @@ export default async function productList(selector, category) {
     renderListWithTemplate(productCardTemplate, el, selectedProducts);
   });
 }
+
+
