@@ -288,6 +288,12 @@ footer {
   max-width: 17rem;
 }
 
+@media screen and (min-width: 768px) {
+  .product-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
 .product-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
