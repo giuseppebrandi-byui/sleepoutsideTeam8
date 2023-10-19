@@ -29,7 +29,7 @@ export default async function productList(selector, category) {
   document.querySelector(".title").innerHTML = category;
 
   selectMenu.addEventListener("change", () => {
-    const selectEl = document.querySelector('select[name="sort-by"]');
+    const selectEl = document.querySelector("select[name='sort-by']");
     let selectValue = selectEl.value;
 
     if (selectValue === "name") {
