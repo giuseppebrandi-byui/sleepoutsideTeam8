@@ -288,18 +288,13 @@ footer {
   max-width: 17rem;
 }
 
-@media screen and (min-width: 768px) {
-  .product-grid {
-    grid-template-columns: repeat(4, 1fr);
-  }
-}
-
 .product-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 1rem;
   list-style: none;
   text-align: center;
+  padding-left: 0;
 }
 
 .product-grid li a {
@@ -310,4 +305,10 @@ footer {
 
 .product-grid img {
   width: 50%;
+}
+
+@media screen and (max-width: 768px) {
+  .product-grid {
+    grid-template-columns: 1fr 1fr;
+  }
 }
