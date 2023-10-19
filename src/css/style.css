@@ -295,11 +295,14 @@ footer {
 }
 
 .product-grid {
+  display: grid;
   grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  list-style: none;
+  text-align: center;
 }
 
 .product-grid li a {
-  display: grid;
   text-decoration: none;
   color: #333;
   font-size: 1rem;
