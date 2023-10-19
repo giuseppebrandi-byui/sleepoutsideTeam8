@@ -294,6 +294,7 @@ footer {
   gap: 1rem;
   list-style: none;
   text-align: center;
+  padding-left: 0;
 }
 
 .product-grid li a {
@@ -304,4 +305,10 @@ footer {
 
 .product-grid img {
   width: 50%;
+}
+
+@media screen and (max-width: 768px) {
+  .product-grid {
+    grid-template-columns: 1fr 1fr;
+  }
 }
