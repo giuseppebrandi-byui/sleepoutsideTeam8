@@ -15,6 +15,7 @@ const div = document.createElement("div");
 div.innerHTML = `<img src="../images/not-found.jpg">`;
 
 let product = {};
+let quantity = 0;
 
 export default async function productDetails(productId) {
   try {
@@ -40,7 +41,15 @@ export default async function productDetails(productId) {
 function addToCart() {
   let cart = getLocalStorage("so-cart");
   cart = cart ? getLocalStorage("so-cart") : [];
+  console.log(product.Id);
+  cart.forEach(product => {
+    if (cart.includes(product.Id)) {
+      cart.forEach(p => (p === product.Id && quantity++));
+      return quantity;
+    }
+})
   cart.push(product);
+  console.log(quantity);
   setLocalStorage("so-cart", cart);
   cartCounter();
 }
