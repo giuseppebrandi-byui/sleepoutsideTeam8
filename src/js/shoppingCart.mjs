@@ -1,5 +1,6 @@
 import { getLocalStorage, setLocalStorage, renderListWithTemplate, cartCounter } from "./utils.mjs";
 
+
 export default function ShoppingCart() {
     const cartItems = getLocalStorage("so-cart");
     const outputEl = document.querySelector(".product-list");
@@ -20,6 +21,7 @@ export default function ShoppingCart() {
     renderListWithTemplate(cartItemTemplate, outputEl, cartItems);
     cartCounter();
     cartTotal();
+    window.location.reload(true);
   })
 }
 
@@ -49,14 +51,14 @@ function cartTotal() {
   //setting the cart total to zero
   const cartTotalEl = document.querySelector(".cart-footer");
   let totalCart = 0;
-  cartTotalEl.innerText = `Total: $${totalCart}`; 
+  // cartTotalEl.innerText = `Total: $${totalCart}`; 
   //looping through to make sure that it adds all items in localStorage to add their final prices
   for (let i = 0; i < total.length; i++) {
     let items = total[i];
     totalCart += items.FinalPrice;
   }
   //checking the total in my cart. If not 0, then display the total of the cart
-  // if (totalCart > 0) {
-  //   cartTotalEl.innerText = `Total: $${totalCart}`;
-  // }
+  if (totalCart > 0) {
+    cartTotalEl.innerText = `Total: $${totalCart.toFixed(2)}`;
+  }
 }

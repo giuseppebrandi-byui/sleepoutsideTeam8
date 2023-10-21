@@ -51,7 +51,9 @@ function renderProductDetails() {
     product.NameWithoutBrand;
   document.querySelector("#productImage").src = product.Images.PrimaryLarge;
   document.querySelector("#productImage").alt = product.Name;
-  document.querySelector("#productFinalPrice").innerText = product.FinalPrice;
+  document.querySelector("#productMsrp").innerText = `$${product.SuggestedRetailPrice.toFixed(2)}`;
+  document.querySelector("#productFinalPrice").innerText = `$${product.FinalPrice}`;
+  document.querySelector("#productSavings").innerText = `You save $${(product.SuggestedRetailPrice - product.FinalPrice).toFixed(2)}`;
   document.querySelector("#productColorName").innerText =
     product.Colors[0].ColorName;
   document.querySelector("#productDescriptionHtmlSimple").innerHTML =
@@ -60,3 +62,5 @@ function renderProductDetails() {
 }
 
 cartCounter();
+
+
