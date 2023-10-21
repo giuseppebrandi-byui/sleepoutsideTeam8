@@ -210,7 +210,7 @@ span:hover {
 }
 
 .product-detail img {
-  width: 100%;
+  width: 70%;
 }
 
 .msrp {
@@ -275,6 +275,18 @@ span.cart-card__remover {
   }
 }
 
+@media screen and (max-width: 768px) {
+  .product-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .product-detail img {
+    width: 100%;
+  }
+}
+
 footer {
   font-size: var(--small-font);
   padding: 1em;
@@ -305,10 +317,4 @@ footer {
 
 .product-grid img {
   width: 50%;
-}
-
-@media screen and (max-width: 768px) {
-  .product-grid {
-    grid-template-columns: 1fr 1fr;
-  }
 }

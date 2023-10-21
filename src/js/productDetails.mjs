@@ -46,10 +46,19 @@ function addToCart() {
 }
 
 function renderProductDetails() {
+  const largeScreen = window.matchMedia("(min-width: 768px)");
+  const mediumScreen = window.matchMedia("(min-width: 420px)");
   document.querySelector("#productName").innerText = product.Brand.Name;
   document.querySelector("#productNameWithoutBrand").innerText =
     product.NameWithoutBrand;
-  document.querySelector("#productImage").src = product.Images.PrimaryLarge;
+  if (largeScreen.matches) {
+    document.querySelector("#productImage").src =
+      product.Images.PrimaryExtraLarge;
+  } else if (mediumScreen.matches) {
+    document.querySelector("#productImage").src = product.Images.PrimaryLarge;
+  } else {
+    document.querySelector("#productImage").src = product.Images.PrimaryMedium;
+  }
   document.querySelector("#productImage").alt = product.Name;
   document.querySelector("#productFinalPrice").innerText = product.FinalPrice;
   document.querySelector("#productColorName").innerText =
