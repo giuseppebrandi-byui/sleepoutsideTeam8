@@ -47,10 +47,12 @@ function addToCart() {
 
 function renderProductDetails() {
   const largeScreen = window.matchMedia("(min-width: 768px)");
-  const mediumScreen = window.matchMedia("(min-width: 420px)");
+  const mediumScreen = window.matchMedia("(min-width: 320px)");
+
   document.querySelector("#productName").innerText = product.Brand.Name;
   document.querySelector("#productNameWithoutBrand").innerText =
     product.NameWithoutBrand;
+
   if (largeScreen.matches) {
     document.querySelector("#productImage").src =
       product.Images.PrimaryExtraLarge;
@@ -59,6 +61,7 @@ function renderProductDetails() {
   } else {
     document.querySelector("#productImage").src = product.Images.PrimaryMedium;
   }
+
   document.querySelector("#productImage").alt = product.Name;
   document.querySelector("#productFinalPrice").innerText = product.FinalPrice;
   document.querySelector("#productColorName").innerText =
