@@ -42,9 +42,9 @@ export default async function productList(selector, category) {
         (price1, price2) => price1.FinalPrice - price2.FinalPrice
       );
     }
-
     renderListWithTemplate(productCardTemplate, el, selectedProducts);
   });
+
 }
 
 
