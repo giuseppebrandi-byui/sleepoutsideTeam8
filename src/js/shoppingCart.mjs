@@ -29,7 +29,7 @@ function cartItemTemplate(item) {
         <img
           src="${item.Images.PrimarySmall}"
           alt="${item.Name}"
-        />
+        /> 
       </a>
       <a href="#">
         <h2 class="card__name">${item.Name}</h2>
@@ -42,6 +42,7 @@ function cartItemTemplate(item) {
   
     return newItem;
 }
+
 function cartTotal() {
   //calling localStorage to see if there is anything in cart and then adding to an array
   let total = getLocalStorage("so-cart");
