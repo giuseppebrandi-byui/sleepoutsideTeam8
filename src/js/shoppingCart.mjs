@@ -1,5 +1,6 @@
 import { getLocalStorage, setLocalStorage, renderListWithTemplate, cartCounter } from "./utils.mjs";
 
+
 export default function ShoppingCart() {
     const cartItems = getLocalStorage("so-cart");
     const outputEl = document.querySelector(".product-list");
@@ -58,6 +59,6 @@ function cartTotal() {
   }
   //checking the total in my cart. If not 0, then display the total of the cart
   if (totalCart > 0) {
-    cartTotalEl.innerText = `Total: $${totalCart}`;
+    cartTotalEl.innerText = `Total: $${totalCart.toFixed(2)}`;
   }
 }

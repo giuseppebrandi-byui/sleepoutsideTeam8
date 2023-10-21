@@ -44,7 +44,7 @@ import shoppingCart from "./shoppingCart.mjs";
 //   return newItem;
 // }
 
-function cartTotal() {
+export function cartTotal() {
   //calling localStorage to see if there is anything in cart and then adding to an array
   let total = getLocalStorage("so-cart");
   total = total ? getLocalStorage("so-cart") : [];
@@ -59,9 +59,10 @@ function cartTotal() {
   if (totalCart > 0) {
     const cartTotalEl = document.querySelector(".cart-footer");
     cartTotalEl.classList.remove("hide");
-    cartTotalEl.innerText = `Total: $${totalCart}`;
+    cartTotalEl.innerText = `Total: $${totalCart.toFixed(2)}`;
   }
 }
+
 const headerFooter = async () => {
   await loadHeaderFooter();
 };
