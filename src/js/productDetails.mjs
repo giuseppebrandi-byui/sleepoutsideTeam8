@@ -41,42 +41,61 @@ export default async function productDetails(productId) {
 function addToCart() {
   let cart = getLocalStorage("so-cart");
   cart = cart ? getLocalStorage("so-cart") : [];
-  console.log(product.Id);
+  //check if product is in the cart, if not add product
   let p = product.Id;
-  //if the cart is empty add the product
-  cart.length == 0 ? cart.push(product) : void (0);
-  if (cart !== null) {
-    //if the cart is not empty and the product is not in the cart already, add it
-    //it is adding the product compared to already in the cart instead of adding the new product
-    
-    //this adds the right product, but keeps adding instead of doing nothing
-    cart.includes(product) ? void (0) : cart.push(product);
-    
-  //   cart.forEach(item => {
-  //     if (item.Id !== p) {//this is not checking the whole array for any instance of the item
-  //       cart.push(product);//it's just seeing it doesnt match the first one and adding it over and over according to the number of items it is checking against
-  //       console.log(cart);
-  //     }
-  //   })
-  }
   
-  //if the cart is not empty check the array for the product and count the
-  //quantity if there is more than 1
-  if (cart !== null) {
-    cart.forEach(item => {
-      if (item.Id == p) {
-        let x = cart.filter(product => product.Id == p)
-        let quantity = x.length;
-        //this is counting wrong
-        quantity++;
-        console.log(quantity);
-        // cart.push(x);//works, but needs refining to be right
-      }
-    })
+  let found = cart.some(item => item.Id == p);
+  if (!found) { cart.push(product); };
+  //if product is already in the cart, remove product add to subarray
+  //and readd to the cart
+  let subarray = cart.filter(item => item.Id == product.Id);
+  if (subarray.length) {
+    // let index = cart.findIndex(item => item.Id == product.Id);
+    let index = cart[cart.indexOf(subarray[0])].quantity++;
+    console.log(subarray);
+    // index++;
+    console.log(quantity);
+  } else {
+    cart.push(product);
   }
+    //creating multi level arrays of empty stuff    
+    // 
+    // console.log(index);
+    
+    // console.log(subarray);
+    // console.log(product);
+    // subarray.push(product);
+    // console.log(subarray);
+    // console.log(subarray.length);
+
+    
+    //  cart.splice(subarray);
+   
+  
+   
+    // subarray.push(product);
+    // if (subarray) {
+    //   console.log(subarray);
+    //   subarray.push(product);
+    //   console.log(subarray);
+    //   cart.splice(index, 0, subarray);
+    // } else {
+      // let x = cart.filter(item => item.Id = p);
+      // //need to figure out how to remove all the elements and re add as a new
+      // //subarray
+      // x.push(product);
+      // console.log(x);
+      // cart.push(x);
+      //somewhere in here need to count the length of the array?
+      //to add the same number of products back in?
+    
+    
+    //then need to create an array and push that array into the cart array
+  
+  
   setLocalStorage("so-cart", cart);
   cartCounter();
-}
+};
 
 function renderProductDetails() {
   document.querySelector("#productName").innerText = product.Brand.Name;
