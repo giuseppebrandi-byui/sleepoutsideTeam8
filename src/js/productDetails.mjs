@@ -42,14 +42,34 @@ function addToCart() {
   let cart = getLocalStorage("so-cart");
   cart = cart ? getLocalStorage("so-cart") : [];
   console.log(product.Id);
-  cart.forEach(product => {
-    if (cart.includes(product.Id)) {
-      cart.forEach(p => (p === product.Id && quantity++));
-      return quantity;
-    }
-})
-  cart.push(product);
-  console.log(quantity);
+  let p = product.Id;
+  //if the cart is empty add the product
+  cart.length == 0 ? cart.push(product) : void (0);
+  //if the cart is not empty check the array for the product and count the
+  //quantity if there is more than 1
+  if (cart !== null) {
+    cart.forEach(product => {
+      if (product.Id == p) {
+        let x = cart.filter(product => product.Id == p)
+        let quantity = x.length;
+        //this is counting wrong
+        quantity++;
+        console.log(quantity);
+      }
+    })
+  } 
+  if (cart !== null) {
+    //if the cart is not empty and the product is not in the cart already, add it
+    //it is adding the product compared to already in the cart instead of adding the new product
+    cart.forEach(product => {
+      if (product.Id !== p) {
+        cart.push(product);
+        }
+      })
+       
+      
+   
+  }
   setLocalStorage("so-cart", cart);
   cartCounter();
 }
