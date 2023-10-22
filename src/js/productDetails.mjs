@@ -15,7 +15,7 @@ const div = document.createElement("div");
 div.innerHTML = `<img src="../images/not-found.jpg">`;
 
 let product = {};
-let quantity = 0;
+
 
 export default async function productDetails(productId) {
   try {
@@ -43,59 +43,21 @@ function addToCart() {
   cart = cart ? getLocalStorage("so-cart") : [];
   //check if product is in the cart, if not add product
   let p = product.Id;
-  
   let found = cart.some(item => item.Id == p);
-  if (!found) { cart.push(product); };
-  //if product is already in the cart, remove product add to subarray
-  //and readd to the cart
-  let subarray = cart.filter(item => item.Id == product.Id);
-  if (subarray.length) {
-    // let index = cart.findIndex(item => item.Id == product.Id);
-    let index = cart[cart.indexOf(subarray[0])].quantity++;
-    console.log(subarray);
-    // index++;
-    console.log(quantity);
+  if (found){
+    let index = cart.findIndex(item => item.Id == product.Id);
+    let quantity = cart[index].Quantity;
+    quantity++;
+    cart[index].Quantity = quantity;
   } else {
+    product.Quantity = 1;
     cart.push(product);
-  }
-    //creating multi level arrays of empty stuff    
-    // 
-    // console.log(index);
-    
-    // console.log(subarray);
-    // console.log(product);
-    // subarray.push(product);
-    // console.log(subarray);
-    // console.log(subarray.length);
-
-    
-    //  cart.splice(subarray);
-   
-  
-   
-    // subarray.push(product);
-    // if (subarray) {
-    //   console.log(subarray);
-    //   subarray.push(product);
-    //   console.log(subarray);
-    //   cart.splice(index, 0, subarray);
-    // } else {
-      // let x = cart.filter(item => item.Id = p);
-      // //need to figure out how to remove all the elements and re add as a new
-      // //subarray
-      // x.push(product);
-      // console.log(x);
-      // cart.push(x);
-      //somewhere in here need to count the length of the array?
-      //to add the same number of products back in?
-    
-    
-    //then need to create an array and push that array into the cart array
-  
-  
+  }  
   setLocalStorage("so-cart", cart);
-  cartCounter();
+  cartCounter(); 
 };
+
+
 
 function renderProductDetails() {
   document.querySelector("#productName").innerText = product.Brand.Name;
