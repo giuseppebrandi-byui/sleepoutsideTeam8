@@ -1,5 +1,6 @@
-import { getLocalStorage, loadHeaderFooter, cartCounter } from "./utils.mjs";
+import { loadHeaderFooter, cartCounter } from "./utils.mjs";
 import shoppingCart from "./shoppingCart.mjs";
+import cartTotal from "./shoppingCart.mjs";
 
 // function renderCartContents() {
 //   let cartItems = getLocalStorage("so-cart");
@@ -44,24 +45,21 @@ import shoppingCart from "./shoppingCart.mjs";
 //   return newItem;
 // }
 
-function cartTotal() {
-  //calling localStorage to see if there is anything in cart and then adding to an array
-  let total = getLocalStorage("so-cart");
-  total = total ? getLocalStorage("so-cart") : [];
-  //setting the cart total to zero
-  let totalCart = 0;
-  //looping through to make sure that it adds all items in localStorage to add their final prices
-  for (let i = 0; i < total.length; i++) {
-    let items = total[i];
-    totalCart += items.FinalPrice;
-  }
-  //checking the total in my cart. If not 0, then display the total of the cart
-  if (totalCart > 0) {
-    const cartTotalEl = document.querySelector(".cart-footer");
-    cartTotalEl.classList.remove("hide");
-    cartTotalEl.innerText = `Total: $${totalCart}`;
-  }
-}
+// function cartTotal() {
+//   //calling localStorage to see if there is anything in cart and then adding to an array
+//   let cart = getLocalStorage("so-cart");
+//   // total = total ? getLocalStorage("so-cart") : [];
+//   //setting the cart total to zero
+//   let totalCart = 0;
+//   //looping through to make sure that it adds all items in localStorage to add their final prices
+
+//   cart.forEach(item => {
+//     totalCart += item.FinalPrice * item.Quantity;
+//     return totalCart;
+//   })
+//   //checking the total in my cart. If not 0, then display the total of the cart
+//   document.querySelector(".cart-total").innerHTML = `Total: $${totalCart.toFixed(2)}`;
+// }
 const headerFooter = async () => {
   await loadHeaderFooter();
 };

@@ -1,7 +1,6 @@
-import { doc } from "prettier";
 import { getLocalStorage, setLocalStorage, renderListWithTemplate, cartCounter } from "./utils.mjs";
 
-export default function ShoppingCart() {
+export default function shoppingCart() {
     const cartItems = getLocalStorage("so-cart");
     const outputEl = document.querySelector(".product-list");
   renderListWithTemplate(cartItemTemplate, outputEl, cartItems);
@@ -17,12 +16,14 @@ export default function ShoppingCart() {
       });
       cartItems.splice(value, 1);
       setLocalStorage("so-cart", cartItems);
+      
     }
     renderListWithTemplate(cartItemTemplate, outputEl, cartItems);
     cartCounter();
     cartTotal();
+    
   });
-  
+  // document.querySelector("cart-card__quantity").onchange = renderListWithTemplate(cartItemTemplate, outputEl, cart);
 };
   
 
@@ -42,30 +43,27 @@ function cartItemTemplate(item) {
       <span class="cart-card__remover" id="${item.Id}">&#10006</a></span>
       <button class="addButton" id="${item.Id}">&#x002B</button>
       <p class="cart-card__quantity">qty:${item.Quantity}</p>
-      <p class="cart-card__price">$${item.FinalPrice}</p>
+      <p class="cart-card__price">$${(item.FinalPrice * item.Quantity).toFixed(2)}</p>
       <button class="minusButton" id="${item.Id}">&#x2212</button>
     </li>`;
   
     return newItem;
 }
 
-function cartTotal() {
+export function cartTotal() {
   //calling localStorage to see if there is anything in cart and then adding to an array
-  let total = getLocalStorage("so-cart");
-  total = total ? getLocalStorage("so-cart") : [];
+  let cart = getLocalStorage("so-cart");
+  // total = total ? getLocalStorage("so-cart") : [];
   //setting the cart total to zero
-  const cartTotalEl = document.querySelector(".cart-footer");
   let totalCart = 0;
-  cartTotalEl.innerText = `Total: $${totalCart}`; 
   //looping through to make sure that it adds all items in localStorage to add their final prices
-  for (let i = 0; i < total.length; i++) {
-    let items = total[i];
-    totalCart += items.FinalPrice;
-  }
+  
+  cart.forEach(item => {
+    totalCart += item.FinalPrice * item.Quantity;
+    return totalCart;
+  })
   //checking the total in my cart. If not 0, then display the total of the cart
-  // if (totalCart > 0) {
-  //   cartTotalEl.innerText = `Total: $${totalCart}`;
-  // }
+  document.querySelector(".cart-total").innerHTML = `Total: $${totalCart.toFixed(2)}`;
 }
 
 function addQuantity() {
@@ -76,13 +74,13 @@ function addQuantity() {
       let index = cart.findIndex(item => item.Id == add);
       let quantity = cart[index].Quantity;
       quantity++;
-      console.log(quantity);
       cart[index].Quantity = quantity;
-      
+      setLocalStorage("so-cart", cart);
+      document.location.reload();
     }
-  }
+  } 
   );
-  setLocalStorage("so-cart", cart);
+ 
 }
 
 function minusQuantity() {
@@ -92,44 +90,19 @@ function minusQuantity() {
       let minus = e.target.id;
       let index = cart.findIndex(item => item.Id == minus);
       let quantity = cart[index].Quantity;
-      console.log(quantity);
       --quantity;
-      console.log(quantity);
       cart[index].Quantity = quantity;
+      if (quantity == 0) {
+        cart.splice(index, 1);
+      }
+      setLocalStorage("so-cart", cart);
+      document.location.reload();
+      
     }
   }
   );
-setLocalStorage("so-cart", cart);
+
 }
 
-// function changeQuantity() {
-//   const cart = getLocalStorage("so-cart");
-//   document.addEventListener("click", function (e) {
-//     if (e.target.classList.contains("addButton")) {
-//       let add = e.target.id;
-//       let index = cart.findIndex(item => item.Id == add);
-//       let quantity = cart[index].Quantity;
-//       quantity++;
-//       console.log(quantity);
-//       cart[index].Quantity = quantity;
-      
-//     }
-//   }
-//   );
-//   document.addEventListener("click", function (e) {
-//     if (e.target.classList.contains("minusButton")) {
-//       let minus = e.target.id;
-//       let index = cart.findIndex(item => item.Id == minus);
-//       let quantity = cart[index].Quantity;
-//       console.log(quantity);
-//       --quantity;
-//       console.log(quantity);
-//       cart[index].Quantity = quantity;
-//     }
-//   }
-//   );
-//   setLocalStorage("so-cart", cart);
-// }
-// changeQuantity();
 addQuantity();
 minusQuantity();
