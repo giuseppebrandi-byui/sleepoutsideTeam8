@@ -1,3 +1,9 @@
 import { loadHeaderFooter } from "./utils.mjs";
+import checkoutProcess from "./checkoutProcess.mjs";
 
-loadHeaderFooter();
+const headerFooter = async () => {
+  await loadHeaderFooter();
+};
+headerFooter();
+checkoutProcess();
+

@@ -12,12 +12,16 @@ productDetails(productId);
 
 async function addDiscountSticker(category) {
   const products = await getData();
-  
-  products.forEach(product => {
+
+  products.forEach((product) => {
     // const msrp = product.querySelector(product.SuggestedRetailPrice);
     // const finalPrice = product.querySelector(product.FinalPrice);
 
-    const discount = Math.round(((product.SuggestedRetailPrice - product.FinalPrice) / product.SuggestedRetailPrice) * 100);
+    const discount = Math.round(
+      ((product.SuggestedRetailPrice - product.FinalPrice) /
+        product.SuggestedRetailPrice) *
+        100
+    );
 
     const discountEl = document.createElement("div");
     discountEl.classList.add("discount-sticker");
@@ -25,8 +29,7 @@ async function addDiscountSticker(category) {
 
     const img = document.querySelector(`.product[data-id="${product.id}"] img`);
     img.appendChild(discountEl);
-
-});
+  });
 }
 
 addDiscountSticker();

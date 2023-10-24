@@ -8,8 +8,8 @@
 
     <title>Sleep Outside | Checkout</title>
 
-    <link rel="stylesheet" href="css/style.css" />
-    <script src="/js/checkout.js"></script>
+    <link rel="stylesheet" href="../css/style.css" />
+    <script src="/js/checkout.js" type="module"></script>
   </head>
 
   <body>
@@ -19,6 +19,99 @@
       <section class="products">
         <h2>Review & Place your Order</h2>
       </section>
+
+      <form method="get" action="/checkout/index.html" class="form-title">
+        <fieldset>
+          <legend>Shipping</legend>
+
+          <label class="top"
+            >First Name* <input type="text" id="fname" name="fname" required
+          /></label>
+
+          <label class="top"
+            >Last Name* <input type="text" id="lname" name="lname" required
+          /></label>
+
+          <label class="top"
+            >Street* <input type="text" id="street" name="street" required
+          /></label>
+
+          <label class="top"
+            >City* <input type="text" id="city" name="city" required
+          /></label>
+
+          <label class="top"
+            >State* <input type="text" id="state" name="state" required
+          /></label>
+
+          <label class="top"
+            >Zip* <input type="text" id="zip" name="zip" required
+          /></label>
+        </fieldset>
+
+        <fieldset>
+          <legend>Payment</legend>
+
+          <label class="top"
+            >Card Number*
+
+            <input type="text" id="cardnumber" name="cardnumber" required
+          /></label>
+
+          <label class="top"
+            >Expiration*
+
+            <input
+              type="number"
+              id="exp-date"
+              name="exp-date"
+              placeholder="MM / YY"
+              required
+          /></label>
+
+          <label class="top"
+            >Security Code*
+
+            <input
+              type="password"
+              id="security-code"
+              name="security-code"
+              required
+          /></label>
+        </fieldset>
+
+        <fieldset>
+          <legend>Order Summary</legend>
+
+          <div class="subtotal">
+            <p class="subtotal">Item Subtotal(2)</p>
+
+            <p id="price">$269.98</p>
+          </div>
+
+          <div class="shipping">
+            <p>Shipping Estimate</p>
+
+            <p id="shippingTotal">Days</p>
+          </div>
+
+          <div class="tax">
+            <p>Tax</p>
+
+            <p id="taxAmount">$5</p>
+          </div>
+
+          <div class="total">
+            <p>Order Total</p>
+
+            <p id="finalTotal">$274.98</p>
+          </div>
+        </fieldset>
+
+        <input type="submit" value="Checkout" class="submitBtn" />
+      </form>
+
+      <footer id="main-footer"></footer>
     </main>
 
     <footer id="main-footer"></footer>

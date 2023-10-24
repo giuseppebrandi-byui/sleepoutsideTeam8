@@ -5,7 +5,8 @@ export default function ShoppingCart() {
     const cartItems = getLocalStorage("so-cart");
     const outputEl = document.querySelector(".product-list");
   renderListWithTemplate(cartItemTemplate, outputEl, cartItems);
-  let value = "";
+  
+}let value = "";
   document.addEventListener("click", function (e) {
     if (e.target.classList.contains("cart-card__remover")) {
       let clickedOn = e.target.id;
@@ -23,7 +24,7 @@ export default function ShoppingCart() {
     cartTotal();
     window.location.reload(true);
   })
-}
+  
 
 function cartItemTemplate(item) {
     const newItem = `<li class="cart-card divider">
