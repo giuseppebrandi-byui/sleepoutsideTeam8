@@ -64,7 +64,9 @@ export function cartTotal() {
   })
   //checking the total in my cart. If not 0, then display the total of the cart
   document.querySelector(".cart-total").innerHTML = `Total: $${totalCart.toFixed(2)}`;
+  
 }
+cartTotal();
 
 function addQuantity() {
   const cart = getLocalStorage("so-cart");
