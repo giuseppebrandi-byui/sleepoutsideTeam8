@@ -1,6 +1,6 @@
 import { getParam, loadHeaderFooter, cartCounter } from "./utils.mjs";
 import productDetails from "./productDetails.mjs";
-import { getData } from "./productData.mjs";
+import { getProductsByCategory } from "./externalServices.mjs";
 
 const headerFooter = async () => {
   await loadHeaderFooter();
@@ -10,8 +10,8 @@ cartCounter();
 const productId = getParam("product");
 productDetails(productId);
 
-async function addDiscountSticker(category) {
-  const products = await getData();
+async function addDiscountSticker() {
+  const products = await getProductsByCategory();
 
   products.forEach((product) => {
     // const msrp = product.querySelector(product.SuggestedRetailPrice);

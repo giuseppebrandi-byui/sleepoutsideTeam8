@@ -111,8 +111,8 @@ export function cartTotal() {
   //checking the total in my cart. If not 0, then display the total of the cart
   if (totalCart > 0) {
     const cartTotalEl = document.querySelector(".cart-footer");
-    cartTotalEl.classList.remove("hide");
-    cartTotalEl.innerText = `Total: $${totalCart.toFixed(2)}`;
+  
+    // cartTotalEl.innerText = `Total: $${totalCart.toFixed(2)}`;
   }
 }
 cartTotal();
