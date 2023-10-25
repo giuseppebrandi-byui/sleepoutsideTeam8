@@ -1,4 +1,4 @@
-import { findProductById } from "./productData.mjs";
+import { findProductById } from "./externalServices.mjs";
 import { getLocalStorage, setLocalStorage, cartCounter } from "./utils.mjs";
 
 // Grab a reference to the cart button, the h2 element, and the product details
