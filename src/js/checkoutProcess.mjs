@@ -5,7 +5,7 @@ function formDataToJSON(formElement) {
     const formData = new FormData(formElement),
         convertedJSON = {};
     
-    FormData.forEach(function (value, key){
+    formData.forEach(function (value, key){
         convertedJSON[key] = value;
     });
     return convertedJSON;
@@ -44,7 +44,6 @@ const checkoutProcess = {
         const quantity = document.querySelector("#items");
         const totalQuantity = this.list.map((item) => item.Quantity);
         this.Quantity = totalQuantity.reduce((sum, item) => sum + item);
-        console.log(this.list);
         quantity.innerText = this.Quantity;
         const cost = this.list.map((item) => item.FinalPrice * item.Quantity);
         this.itemTotal = cost.reduce((sum, item) => sum + item).toFixed(2);
@@ -73,7 +72,7 @@ const checkoutProcess = {
         json.orderTotal = this.orderTotal;
         json.tax = this.tax;
         json.shipping = this.shipping;
-        json.items = packageitems(this.list);
+        json.items = packageItems(this.list);
         console.log(json);
         try {
             const res = await checkout(json);
