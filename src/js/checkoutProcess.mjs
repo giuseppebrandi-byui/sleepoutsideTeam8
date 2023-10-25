@@ -59,9 +59,9 @@ const checkoutProcess = {
         this.displayOrderTotals();
     },
     displayOrderTotals: function () {
-        const tax = document.querySelector(this.outputSelector + "#tax");
-        const shipping = document.querySelector(this.outputSelector + "#shipping");
-        const orderTotal = document.querySelector(this.outputSelector + "#orderTotal");
+        const tax = document.querySelector("#tax");
+        const shipping = document.querySelector("#shipping");
+        const orderTotal = document.querySelector("#orderTotal");
         shipping.innerText = "$" + this.shipping;
         tax.innerText = "$" + this.tax;
         orderTotal.innerText = "$" + this.orderTotal;
