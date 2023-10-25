@@ -1,5 +1,5 @@
 import { loadHeaderFooter, cartCounter, cartTotal } from "./utils.mjs";
-import ShoppingCart from "./shoppingCart.mjs";
+import shoppingCart from "./shoppingCart.mjs";
 
 
 // function renderCartContents() {
@@ -25,47 +25,13 @@ import ShoppingCart from "./shoppingCart.mjs";
 //   });
 // }
 
-// function cartItemTemplate(item) {
-//   const newItem = `<li class="cart-card divider">
-//     <a href="#" class="cart-card__image">
-//       <img
-//         src="${item.Image}"
-//         alt="${item.Name}"
-//       />
-//     </a>
-//     <a href="#">
-//       <h2 class="card__name">${item.Name}</h2>
-//     </a>
-//     <p class="cart-card__color">${item.Colors[0].ColorName}</p>
-//     <span class="cart-card__remover" id="${item.Id}">&#10006</a></span>
-//     <p class="cart-card__quantity">qty: 1</p>
-//     <p class="cart-card__price">$${item.FinalPrice}</p>
-//   </li>`;
 
-//   return newItem;
-// }
-
-// function cartTotal() {
-//   //calling localStorage to see if there is anything in cart and then adding to an array
-//   let cart = getLocalStorage("so-cart");
-//   // total = total ? getLocalStorage("so-cart") : [];
-//   //setting the cart total to zero
-//   let totalCart = 0;
-//   //looping through to make sure that it adds all items in localStorage to add their final prices
-
-//   cart.forEach(item => {
-//     totalCart += item.FinalPrice * item.Quantity;
-//     return totalCart;
-//   })
-//   //checking the total in my cart. If not 0, then display the total of the cart
-//   document.querySelector(".cart-total").innerHTML = `Total: $${totalCart.toFixed(2)}`;
-// }
 const headerFooter = async () => {
   await loadHeaderFooter();
 };
 
 headerFooter();
 // renderCartContents();
-ShoppingCart();
+shoppingCart();
 cartCounter();
 cartTotal();

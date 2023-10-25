@@ -23,7 +23,7 @@ export default function ShoppingCart() {
     cartTotal();
     
   });
-  // document.querySelector("cart-card__quantity").onchange = renderListWithTemplate(cartItemTemplate, outputEl, cart);
+  
 };
   
 
@@ -68,43 +68,43 @@ export function cartTotal() {
 }
 cartTotal();
 
-function addQuantity() {
-  const cart = getLocalStorage("so-cart");
-  document.addEventListener("click", function (e) {
-    if (e.target.classList.contains("addButton")) {
-      let add = e.target.id;
-      let index = cart.findIndex(item => item.Id == add);
-      let quantity = cart[index].Quantity;
-      quantity++;
-      cart[index].Quantity = quantity;
-      setLocalStorage("so-cart", cart);
-      document.location.reload();
-    }
-  } 
-  );
+// function addQuantity() {
+//   const cart = getLocalStorage("so-cart");
+//   document.addEventListener("click", function (e) {
+//     if (e.target.classList.contains("addButton")) {
+//       let add = e.target.id;
+//       let index = cart.findIndex(item => item.Id == add);
+//       let quantity = cart[index].Quantity;
+//       quantity++;
+//       cart[index].Quantity = quantity;
+//       setLocalStorage("so-cart", cart);
+//       document.location.reload();
+//     }
+//   } 
+//   );
  
-}
+// }
 
-function minusQuantity() {
-  const cart = getLocalStorage("so-cart");
-  document.addEventListener("click", function (e) {
-    if (e.target.classList.contains("minusButton")) {
-      let minus = e.target.id;
-      let index = cart.findIndex(item => item.Id == minus);
-      let quantity = cart[index].Quantity;
-      --quantity;
-      cart[index].Quantity = quantity;
-      if (quantity == 0) {
-        cart.splice(index, 1);
-      }
-      setLocalStorage("so-cart", cart);
-      document.location.reload();
+// function minusQuantity() {
+//   const cart = getLocalStorage("so-cart");
+//   document.addEventListener("click", function (e) {
+//     if (e.target.classList.contains("minusButton")) {
+//       let minus = e.target.id;
+//       let index = cart.findIndex(item => item.Id == minus);
+//       let quantity = cart[index].Quantity;
+//       --quantity;
+//       cart[index].Quantity = quantity;
+//       if (quantity == 0) {
+//         cart.splice(index, 1);
+//       }
+//       setLocalStorage("so-cart", cart);
+//       document.location.reload();
       
-    }
-  }
-  );
+//     }
+//   }
+//   );
 
-}
+// }
 
-addQuantity();
-minusQuantity();
+// addQuantity();
+// minusQuantity();
