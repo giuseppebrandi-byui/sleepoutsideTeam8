@@ -428,3 +428,112 @@ form label input:required {
 form label input:required:valid {
   border-left: green solid 6px;
 }
+
+/* Modal */
+.wrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 420px;
+  width: 100%;
+  border-radius: 12px;
+  padding: 20px 30px 40px;
+  background: var(--primary-color);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease-in-out;
+  overflow: hidden;
+}
+
+.wrapper.active .form.signup {
+  bottom: 0%;
+  border-radius: 16%;
+  box-shadow: 0 -5px 10px rgba(0, 0, 0, 0.1);
+}
+
+.form header,
+.freebie header {
+  font-size: 30px;
+  color: #333;
+  font-weight: bold;
+  margin-bottom: 40px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.wrapper.active .form.signup header {
+  opacity: 1;
+}
+
+.wrapper.active .freebie header {
+  opacity: 0;
+}
+
+.wrapper form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+form input {
+  height: 60px;
+  outline: none;
+  border: none;
+  padding: 0 15px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+  border-radius: 8px;
+  background: #fff;
+}
+
+.signupBtn {
+  margin-top: 15px;
+  background-color: var(--secondary-color);
+  color: #fff;
+  padding: none;
+  font-size: var(--large-font);
+  cursor: pointer;
+}
+
+.form.signup {
+  position: absolute;
+  left: 50%;
+  bottom: -100%;
+  transform: translateX(-50%);
+  width: calc(100% + 220px);
+  padding: 20px 140px;
+  border-radius: 50%;
+  height: 100%;
+  background: #fff;
+  transition: all 0.6s ease;
+}
+
+.form.signup input {
+  border: 1px solid #aaa;
+}
+
+.form.signup input:focus {
+  box-shadow: 0 1px 0 #ddd;
+}
+
+.form.signup header {
+  color: #333;
+  opacity: 0.6;
+}
+
+.header-btn-wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.ModalCloseBtn,
+.signUpCloseBtn {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+
+.free-pass {
+  font-size: 2rem;
+  text-align: center;
+}
