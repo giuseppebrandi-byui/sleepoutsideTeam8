@@ -89,7 +89,12 @@ export async function loadHeaderFooter() {
 export function cartCounter() {
   let cart = getLocalStorage("so-cart");
   cart = cart ? getLocalStorage("so-cart") : [];
-  let count = cart.length;
+  let sum = 0;
+  cart.forEach(item => {
+    sum += item.Quantity;
+    return sum;
+  })
+  let count = sum;
   const span = document.querySelector("#count");
   if (count === null) {
     span.textContent = count;

@@ -1,6 +1,7 @@
 :root {
-  --font-body: Arial, Helvetica, sans-serif;
+  --font-body:  Arial, Helvetica, sans-serif;
   --font-headline: Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  
   /* colors */
   --primary-color: #f0a868;
   --secondary-color: #525b0f;
@@ -239,7 +240,7 @@ span:hover {
 /* Start cart list card styles */
 .cart-card {
   display: grid;
-  grid-template-columns: 25% auto 15%;
+  grid-template-columns: 25% auto 15% 15% 15%;
   font-size: var(--small-font);
   /* max-height: 120px; */
   align-items: center;
@@ -263,19 +264,33 @@ span:hover {
 }
 span.cart-card__remover {
   grid-row: 1;
-  grid-column: 3;
+  grid-column: 5;
   justify-self: right;
+}
+.addButton {
+  grid-row: 2;
+  grid-column: 3;
+  padding: 0.5em;
+}
+.minusButton {
+  grid-row: 2;
+  grid-column: 5;
+  padding: 0.5em;
 }
 .cart-card__quantity {
   grid-row: 2;
-  grid-column: 3;
+  grid-column: 4;
   justify-self: right;
+  align-items: center;
+  margin-bottom: 0;
 }
 
 .cart-card__price {
   grid-row: 3;
-  grid-column: 3;
+  grid-column: 5;
   justify-self: right;
+  margin-bottom: 0;
+  padding: 1em;
 }
 
 @media screen and (min-width: 500px) {

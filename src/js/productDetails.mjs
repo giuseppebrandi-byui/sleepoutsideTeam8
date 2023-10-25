@@ -16,6 +16,7 @@ div.innerHTML = `<img src="../images/not-found.jpg">`;
 
 let product = {};
 
+
 export default async function productDetails(productId) {
   try {
     // get the details for the current product. findProductById will return a promise! use await or .then() to process it
@@ -40,10 +41,23 @@ export default async function productDetails(productId) {
 function addToCart() {
   let cart = getLocalStorage("so-cart");
   cart = cart ? getLocalStorage("so-cart") : [];
-  cart.push(product);
+  //check if product is in the cart, if not add product
+  let p = product.Id;
+  let found = cart.some(item => item.Id == p);
+  if (found){
+    let index = cart.findIndex(item => item.Id == product.Id);
+    let quantity = cart[index].Quantity;
+    quantity++;
+    cart[index].Quantity = quantity;
+  } else {
+    product.Quantity = 1;
+    cart.push(product);
+  }  
   setLocalStorage("so-cart", cart);
-  cartCounter();
-}
+  cartCounter(); 
+};
+
+
 
 function renderProductDetails() {
   const largeScreen = window.matchMedia("(min-width: 768px)");
