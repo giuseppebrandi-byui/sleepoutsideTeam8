@@ -1,5 +1,5 @@
-import { loadHeaderFooter, cartCounter } from "./utils.mjs";
-import shoppingCart from "./shoppingCart.mjs";
+import { loadHeaderFooter, cartCounter, cartTotal } from "./utils.mjs";
+import ShoppingCart from "./shoppingCart.mjs";
 import cartTotal from "./shoppingCart.mjs";
 
 // function renderCartContents() {
@@ -66,6 +66,6 @@ const headerFooter = async () => {
 
 headerFooter();
 // renderCartContents();
-shoppingCart();
+ShoppingCart();
 cartCounter();
 cartTotal();
