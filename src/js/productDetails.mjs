@@ -1,4 +1,4 @@
-import { findProductById } from "./productData.mjs";
+import { findProductById } from "./externalServices.mjs";
 import { getLocalStorage, setLocalStorage, cartCounter } from "./utils.mjs";
 
 // Grab a reference to the cart button, the h2 element, and the product details
@@ -60,12 +60,26 @@ function addToCart() {
 
 
 function renderProductDetails() {
+  const largeScreen = window.matchMedia("(min-width: 768px)");
+  const mediumScreen = window.matchMedia("(min-width: 320px)");
+
   document.querySelector("#productName").innerText = product.Brand.Name;
   document.querySelector("#productNameWithoutBrand").innerText =
     product.NameWithoutBrand;
-  document.querySelector("#productImage").src = product.Images.PrimaryLarge;
+
+  if (largeScreen.matches) {
+    document.querySelector("#productImage").src =
+      product.Images.PrimaryExtraLarge;
+  } else if (mediumScreen.matches) {
+    document.querySelector("#productImage").src = product.Images.PrimaryLarge;
+  } else {
+    document.querySelector("#productImage").src = product.Images.PrimaryMedium;
+  }
+
   document.querySelector("#productImage").alt = product.Name;
-  document.querySelector("#productFinalPrice").innerText = product.FinalPrice;
+  document.querySelector("#productMsrp").innerText = `$${product.SuggestedRetailPrice.toFixed(2)}`;
+  document.querySelector("#productFinalPrice").innerText = `$${product.FinalPrice}`;
+  document.querySelector("#productSavings").innerText = `You save $${(product.SuggestedRetailPrice - product.FinalPrice).toFixed(2)}`;
   document.querySelector("#productColorName").innerText =
     product.Colors[0].ColorName;
   document.querySelector("#productDescriptionHtmlSimple").innerHTML =
@@ -74,3 +88,5 @@ function renderProductDetails() {
 }
 
 cartCounter();
+
+

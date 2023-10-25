@@ -1,9 +1,11 @@
 import { getLocalStorage, setLocalStorage, renderListWithTemplate, cartCounter } from "./utils.mjs";
 
+
 export default function ShoppingCart() {
-    const cartItems = getLocalStorage("so-cart");
-    const outputEl = document.querySelector(".product-list");
+  const cartItems = getLocalStorage("so-cart");
+  const outputEl = document.querySelector(".product-list");
   renderListWithTemplate(cartItemTemplate, outputEl, cartItems);
+  
   let value = "";
   document.addEventListener("click", function (e) {
     if (e.target.classList.contains("cart-card__remover")) {
@@ -21,11 +23,16 @@ export default function ShoppingCart() {
     renderListWithTemplate(cartItemTemplate, outputEl, cartItems);
     cartCounter();
     cartTotal();
-    
+
   });
   
 };
   
+
+
+    window.location.reload(true);
+  })
+};
 
 
 function cartItemTemplate(item) {
@@ -108,3 +115,7 @@ cartTotal();
 
 // addQuantity();
 // minusQuantity();
+
+}
+cartTotal();
+
