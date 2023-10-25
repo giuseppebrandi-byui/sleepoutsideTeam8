@@ -52,7 +52,10 @@ const checkoutProcess = {
     },
     calculateOrderTotal: function () {
         this.tax = (this.itemTotal * 0.06).toFixed(2);
-        this.shipping = 10 + (this.list.length - 1) * 2;
+        const totalQuantity = this.list.map((item) => item.Quantity);
+        this.Quantity = totalQuantity.reduce((sum, item) => sum + item);
+        console.log(this.Quantity);
+        this.shipping = 10 + (this.Quantity - 1) * 2;
         this.orderTotal = (parseFloat(this.itemTotal)
             + parseFloat(this.shipping) + parseFloat(this.tax)).toFixed(2);
         this.displayOrderTotals();
