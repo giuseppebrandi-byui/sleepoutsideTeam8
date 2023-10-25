@@ -29,6 +29,7 @@ const checkoutProcess = {
     outputSelector: "",
     list: [],
     itemTotal: 0,
+    Quantity: 0,
     shipping: 0,
     tax: 0,
     orderTotal: 0,
@@ -39,12 +40,14 @@ const checkoutProcess = {
         this.calculateItemSummary();
     },
     calculateItemSummary: function () {
-        let subtotal = document.querySelector(this.outputSelector + "#price");
-        let quantity = document.querySelector(this.outputSelector + "#items");
-        quantity.innerText = (this.list.length);
-        const amounts = this.list.map((item) => item.FinalPrice);
-        this.itemTotal = amounts.reduce((sum, item) => sum + item);
-        
+        const subtotal = document.querySelector("#price");
+        const quantity = document.querySelector("#items");
+        const totalQuantity = this.list.map((item) => item.Quantity);
+        this.Quantity = totalQuantity.reduce((sum, item) => sum + item);
+        console.log(this.list);
+        quantity.innerText = this.Quantity;
+        const cost = this.list.map((item) => item.FinalPrice * item.Quantity);
+        this.itemTotal = cost.reduce((sum, item) => sum + item).toFixed(2);
         subtotal.innerText = "$" + this.itemTotal;
         
     },
