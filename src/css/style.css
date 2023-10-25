@@ -1,7 +1,7 @@
 :root {
-  --font-body:  Arial, Helvetica, sans-serif;
+  --font-body: Arial, Helvetica, sans-serif;
   --font-headline: Haettenschweiler, "Arial Narrow Bold", sans-serif;
-  
+
   /* colors */
   --primary-color: #f0a868;
   --secondary-color: #525b0f;
@@ -357,16 +357,15 @@ footer {
   text-align: center;
 }
 
-.order-summary > ul{
+.order-summary > ul {
   list-style-type: none;
-  
 }
 .order-summary li {
-display: flex; 
-justify-content: space-between;
-align-items: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
-.order-summary input{
+.order-summary input {
   width: 25%;
   font-size: 1em;
 }

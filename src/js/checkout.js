@@ -6,9 +6,7 @@ const headerFooter = async () => {
 };
 headerFooter();
 
-
 checkoutProcess.init("so-cart", ".order-summary");
-
 
 document
   .querySelector("#zip")
