@@ -6,15 +6,10 @@ var products;
 function productCardTemplate(product) {
   return `<li class="product-card">
             <a href="../product_pages/index.html?product=${product.Id}">
-            <picture>
-              <source media="(min-width: 480px)" srcset="${
-                product.Images.PrimaryLarge
-              }" />
               <img
                 src="${product.Images.PrimaryMedium}"
-                alt="Image of ${product.Name}"
+                alt="${product.Name}"
               />
-            </picture>
               <h3 class="card__brand">${product.Brand.Name}</h3>
               <h2 class="card__name">${product.NameWithoutBrand}</h2>
               <p class="card__description" style="display:none">${
@@ -27,51 +22,45 @@ function productCardTemplate(product) {
               ).toFixed(2)}</li>`;
 }
 
-export default async function productList(selector, category) {
-  category = category ?? window.location.search.split("?q=")[1];
-  const el = document.querySelector(selector);
-  products = await getProductsByCategory(category);
+export default async function functionForMain(selector) {
+  const tents = await getProductsByCategory("tents");
+  const backpacks = await getProductsByCategory("backpacks");
+  const sleeping = await getProductsByCategory("sleeping-bags");
+  const hammocks = await getProductsByCategory("hammocks");
 
-  if (products.length < 1) {
-    const tents = await getProductsByCategory("tents");
-    const backpacks = await getProductsByCategory("backpacks");
-    const sleeping = await getProductsByCategory("sleeping-bags");
-    const hammocks = await getProductsByCategory("hammocks");
-
-    products = tents.concat(backpacks, sleeping, hammocks);
-  }
-  const selectMenu = document.querySelector("#sort-by");
-
-  // It displays the full list of products by category
-  renderListWithTemplate(productCardTemplate, el, products);
-  document.querySelector(".title").innerHTML = category;
+  products = tents.concat(backpacks, sleeping, hammocks);
 
   // It displays products depending on the user input
-  if (window.location.search.split("?q=")[1]) filterProducts();
   const filterInput = document.querySelector("#filterInput");
   filterInput.addEventListener("keyup", filterProducts);
-
-  // It displays the list of products in alphabetical order or from law price to high
-  selectMenu.addEventListener("change", () => {
-    const selectEl = document.querySelector("select[name='sort-by']");
-    let selectValue = selectEl.value;
-
-    if (selectValue === "name") {
-      products.sort((a, b) => (a.NameWithoutBrand > b.NameWithoutBrand) - 1);
-    } else if (selectValue === "price") {
-      products.sort((price1, price2) => price1.FinalPrice - price2.FinalPrice);
-    }
-    renderListWithTemplate(productCardTemplate, el, products);
-    if (window.location.search.split("?q=")[1]) filterProducts();
-  });
 }
 
 // It filters the products according to the user input
 function filterProducts() {
+  var modal = document.getElementById("myModal");
+  modal.style.display = "block";
+  // Get the modal
+
+  // Get the <span> element that closes the modal
+  var span = document.getElementsByClassName("close")[0];
+
+  // When the user clicks on <span> (x), close the modal
+  span.onclick = function () {
+    modal.style.display = "none";
+  };
+
+  // When the user clicks anywhere outside of the modal, close it
+  window.onclick = function (event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  };
+
+  const el = document.querySelector(".product-list");
+  renderListWithTemplate(productCardTemplate, el, products);
+
   const productList = document.querySelector(".product-list");
-  let filterValue = (
-    filterInput.value || window.location.search.split("?q=")[1]
-  ).toUpperCase();
+  let filterValue = filterInput.value.toUpperCase();
   let item = productList.querySelectorAll(".product-card");
   for (let i = 0; i < item.length; i++) {
     let brand = item[i].querySelector(".card__brand");
@@ -86,5 +75,23 @@ function filterProducts() {
     } else {
       item[i].style.display = "none";
     }
+  }
+
+  var showUrl;
+  showUrl = false;
+
+  document.querySelectorAll(".product-card").forEach((e) => {
+    if (e.getAttribute("style") != "display: none;") {
+      showUrl = true;
+    }
+  });
+  var ul = document.getElementById("all-products");
+  if (showUrl) {
+    ul.innerHTML = `
+    <a href="../product-list/index.html?q=${filterInput.value}">
+      <h3 class="card__brand">Click for more </h3>
+  </li>`;
+  } else {
+    ul.innerHTML = `No elements found with your search: ${filterInput.value}`;
   }
 }
