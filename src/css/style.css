@@ -149,7 +149,6 @@ span:hover {
   color: rgb(124, 68, 124);
   font-family: "Arial", sans-serif;
   font-weight: bold;
- 
 }
 
 #count:empty {
@@ -241,7 +240,7 @@ span:hover {
 }
 
 /* Start cart list card styles */
-.product-category{
+.product-category {
   display: block;
   align-items: center;
 }
