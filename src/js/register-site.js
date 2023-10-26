@@ -9,7 +9,8 @@ form.addEventListener("submit", (event) => {
   event.preventDefault();
   const fullname = document.querySelector("[name=fullname].value");
   const email = document.querySelector("[name=email].value");
-  if (fullname !== "" && email !== "") {
+  const password = document.querySelector("[name=password].value");
+  if (fullname !== "" && email !== "" && password !== "") {
     wrapper.classList.remove("active");
   }
 });

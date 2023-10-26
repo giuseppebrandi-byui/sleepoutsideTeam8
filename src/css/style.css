@@ -438,7 +438,7 @@ form label input:required:valid {
   max-width: 420px;
   width: 100%;
   border-radius: 12px;
-  padding: 20px 30px 40px;
+  padding: 20px 30px 70px;
   background: var(--primary-color);
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease-in-out;
