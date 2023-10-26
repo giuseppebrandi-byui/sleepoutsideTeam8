@@ -32,8 +32,10 @@ export default async function productList(selector, category) {
     (product) => product.Id !== "989CG" && product.Id !== "880RT"
   );
   renderListWithTemplate(productCardTemplate, el, selectedProducts);
-  document.querySelector(".title").innerHTML = category;
-
+  document.querySelector(".title").innerHTML =
+    category.replace('-', ' ').replace(/(?:^|\s)\S/g, a => a.toUpperCase()) + "(" + products.length + ")";
+  
+// replace(/-/g," "
   selectMenu.addEventListener("change", () => {
     const selectEl = document.querySelector("select[name='sort-by']");
     let selectValue = selectEl.value;

@@ -121,6 +121,7 @@ button {
   padding-top: 1em;
   position: relative;
   text-align: center;
+  animation: icon 5s infinite;
 }
 
 .cart svg {
@@ -148,7 +149,9 @@ span:hover {
   color: rgb(124, 68, 124);
   font-family: "Arial", sans-serif;
   font-weight: bold;
+ 
 }
+
 #count:empty {
   display: none;
 }
@@ -238,6 +241,10 @@ span:hover {
 }
 
 /* Start cart list card styles */
+.product-category{
+  display: block;
+  align-items: center;
+}
 .cart-card {
   display: grid;
   grid-template-columns: 25% auto 15% 15% 15%;
