@@ -70,7 +70,9 @@ export default async function productList(selector, category) {
 function filterProducts() {
   const productList = document.querySelector(".product-list");
   let filterValue = (
-    filterInput.value || window.location.search.split("?q=")[1]
+    filterInput.value ||
+    window.location.search.split("?q=")[1] ||
+    ""
   ).toUpperCase();
   let item = productList.querySelectorAll(".product-card");
   for (let i = 0; i < item.length; i++) {
