@@ -1,6 +1,5 @@
 const form = document.querySelector(".reg-form");
 const wrapper = document.querySelector(".wrapper");
-const signupButton = document.querySelector(".signupBtn");
 const closeButton = document.querySelector(".ModalCloseBtn");
 const signupCloseBtn = document.querySelector(".signUpCloseBtn");
 
