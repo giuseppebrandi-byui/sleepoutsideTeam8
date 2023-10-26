@@ -4,24 +4,16 @@ const signupButton = document.querySelector(".signupBtn");
 const closeButton = document.querySelector(".ModalCloseBtn");
 const signupCloseBtn = document.querySelector(".signUpCloseBtn");
 
-signupButton.addEventListener("click", () => {
-  wrapper.classList.remove("active");
-});
-
-// form.addEventListener("submit", (event) => {
-//   event.preventDefault();
-//   const fullname = document.querySelector("input#user-fullnamme");
-//   const email = document.querySelector("input#user-email");
-//   if (
-//     fullname.value !== "" ||
-//     (fullname.value !== null && email.value !== "") ||
-//     email.value !== null
-//   ) {
-//     wrapper.classList.remove("active");
-//   }
-// });
-
 wrapper.style.display = "none";
+
+form.addEventListener("submit", (event) => {
+  event.preventDefault();
+  const fullname = document.querySelector("[name=fullname].value");
+  const email = document.querySelector("[name=email].value");
+  if (fullname !== "" && email !== "") {
+    wrapper.classList.remove("active");
+  }
+});
 
 window.addEventListener("load", function () {
   setTimeout(function open() {
