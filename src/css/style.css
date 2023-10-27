@@ -111,6 +111,37 @@ button {
   cursor: pointer;
 }
 
+.newsletter {
+  background-color: rgb(202, 219, 223);
+  width: 55%;
+  margin: 0 auto;
+  margin-bottom: 2%;
+  border-radius: 15px;  
+}
+
+.subscribe {
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+ .email {
+  font-size: 1.25rem;
+  padding: .25rem .5rem;
+  width: 75%;
+ }
+
+ p.newsletter-caption {
+  font-size: .8rem;
+  padding: .25rem 1rem;
+ }
+
+ .newsletter-button {
+  font-size: 1.5rem;
+  cursor: pointer;
+  background-color:rgba(0, 0, 0, 0.705);
+  color: white;
+}
+
 .divider {
   border-bottom: 2px solid var(--primary-color);
 }
