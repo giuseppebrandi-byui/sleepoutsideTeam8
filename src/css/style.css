@@ -447,7 +447,7 @@ form#form {
   border: 1px solid var(--tertiary-color);
 }
 
-input {
+input#filterInput {
   all: unset;
   color: #303030;
   height: 100%;
