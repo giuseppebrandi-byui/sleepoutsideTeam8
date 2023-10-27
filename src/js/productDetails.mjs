@@ -27,6 +27,7 @@ export default async function productDetails(productId) {
   if (product !== undefined) {
     // once we have the product details we can render out the HTML
     renderProductDetails();
+    addDiscountSticker();
     // once the HTML is rendered we can add a listener to Add to Cart button
     document.getElementById("addToCart").addEventListener("click", addToCart);
   } else {
@@ -86,6 +87,23 @@ function renderProductDetails() {
     product.DescriptionHtmlSimple;
   document.querySelector("#addToCart").dataset.id = product.Id;
 }
+
+function addDiscountSticker() {
+    const msrp = product.querySelector(product.SuggestedRetailPrice);
+    const finalPrice = product.querySelector(product.FinalPrice);
+
+    const discount = Math.round(
+      ((msrp - finalPrice) / msrp) * 100);
+
+    const discountEl = document.createElement("div");
+    discountEl.classList.add("discount-sticker");
+    discountEl.innerText = `-${discount}%`;
+
+    const img = document.querySelector(`.product[data-id="${product.id}"] img`);
+    img.appendChild(discountEl);
+  };
+
+
 
 cartCounter();
 

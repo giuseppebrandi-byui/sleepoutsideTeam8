@@ -77,6 +77,38 @@ header {
 .logo--square > div {
   margin-top: -1.7em;
 }
+
+.newsletter {
+  background-color: rgb(202, 219, 223);
+  width: 55%;
+  margin: 0 auto;
+  margin-bottom: 2%;
+  border-radius: 15px;  
+}
+
+.subscribe {
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+ .email {
+  font-size: 1.25rem;
+  padding: .25rem .5rem;
+  width: 75%;
+ }
+
+ p.newsletter-caption {
+  font-size: .8rem;
+  padding: .25rem 1rem;
+ }
+
+ .newsletter-button {
+  font-size: 1.5rem;
+  cursor: pointer;
+  background-color:rgba(0, 0, 0, 0.705);
+  color: white;
+}
+
 /* utility classes */
 .highlight {
   color: var(--tertiary-color);
@@ -354,7 +386,7 @@ footer {
 /* Checkout Form */
 
 .form-title {
-  text-align: center;
+  text-align: left;
 }
 
 .order-summary > ul {
