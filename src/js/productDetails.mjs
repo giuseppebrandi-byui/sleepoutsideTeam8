@@ -6,7 +6,7 @@ import { getLocalStorage, setLocalStorage, cartCounter } from "./utils.mjs";
 const cartButton = document.querySelector("#addToCart");
 const h2 = document.querySelector("#productNameWithoutBrand");
 const productDetailSection = document.querySelector(".product-detail");
-
+const cart = document.querySelector(".count");
 // Set the product details section with class "center"
 productDetailSection.classList.add("center");
 // Creates a new div element node
@@ -28,7 +28,8 @@ export default async function productDetails(productId) {
     // once we have the product details we can render out the HTML
     renderProductDetails();
     // once the HTML is rendered we can add a listener to Add to Cart button
-    document.getElementById("addToCart").addEventListener("click", addToCart);
+    document.getElementById("addToCart").addEventListener("click", addToCart)
+    
   } else {
     // Append div with images to the product detail section
     productDetailSection.append(div);
@@ -55,6 +56,7 @@ function addToCart() {
   }  
   setLocalStorage("so-cart", cart);
   cartCounter(); 
+  
 };
 
 
@@ -62,6 +64,9 @@ function addToCart() {
 function renderProductDetails() {
   const largeScreen = window.matchMedia("(min-width: 768px)");
   const mediumScreen = window.matchMedia("(min-width: 320px)");
+  document.querySelector(".product-category").innerText =
+    product.Category.replace('-', ' ').replace(/(?:^|\s)\S/g, a => a.toUpperCase())
+      
 
   document.querySelector("#productName").innerText = product.Brand.Name;
   document.querySelector("#productNameWithoutBrand").innerText =

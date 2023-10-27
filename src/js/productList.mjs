@@ -44,7 +44,8 @@ export default async function productList(selector, category) {
 
   // It displays the full list of products by category
   renderListWithTemplate(productCardTemplate, el, products);
-  document.querySelector(".title").innerHTML = category;
+  document.querySelector(".title").innerHTML =
+    category.replace('-', ' ').replace(/(?:^|\s)\S/g, a => a.toUpperCase()) + "(" + products.length + ")";
 
   // It displays products depending on the user input
   if (window.location.search.split("?q=")[1]) filterProducts();
