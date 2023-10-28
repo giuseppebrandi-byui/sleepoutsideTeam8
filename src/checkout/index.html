@@ -16,8 +16,9 @@
     <header class="divider" id="main-header"></header>
 
     <main class="divider">
-      <h2>Review & Place your Order</h2>
+      
       <section class="checkout-form">
+        <h2>Review & Place your Order</h2>
         <form
           method="get"
           action="/checkout/index.html"
@@ -83,27 +84,30 @@
             <legend>Order Summary</legend>
             <ul>
               <li>
-                <label for="subtotal"
-                  >Item Subtotal(<span id="items"></span>)</label
-                >
-
-                <p id="price" name="price"></p>
+                <class="subtotal"
+                  >Item Subtotal(<span id="items"></span>)</label>
               </li>
+              
+              <li><span id="price" name="price"></span></li>
+              
               <li>
-                <label for="shipping">Shipping Estimate</label>
+                <class="shipping">Shipping Estimate</label>
 
-                <p id="shipping" name="shipping"></p>
+                
               </li>
+              <li><span id="shippingamount" name="shipping"></span></li>
               <li>
-                <label for="tax">Tax</label>
+                <class="tax">Tax</label>
 
-                <p id="tax" name="tax"></p>
+                
               </li>
+              <li><span id="tax" name="tax"></span></li>
               <li>
-                <label for="total"> <b>Order Total</b></label>
+                <class="total"> <b>Order Total</b></label>
 
-                <p id="orderTotal" name="orderTotal"></p>
+                
               </li>
+              <li><span id="orderTotal" name="orderTotal"></span></li>
             </ul>
           </fieldset>
 
