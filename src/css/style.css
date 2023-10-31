@@ -142,6 +142,14 @@ button {
   color: white;
 }
 
+.modal-container {
+  display: none;
+  position: fixed;
+  background-color: rgb(202, 219, 223);
+  font-size: 3rem;
+  border-radius: 20px;
+}
+
 .divider {
   border-bottom: 2px solid var(--primary-color);
 }

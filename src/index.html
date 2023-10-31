@@ -9,6 +9,7 @@
     <script src="/js/main.js" type="module"></script>
     <script src="/js/alert.js" type="module"></script>
     <script src="/js/register-site.js" type="module"></script>
+    <script src="/js/newsletter.js"></script>
   </head>
   <body>
     <header class="divider" id="main-header"></header>
@@ -76,16 +77,22 @@
       </section>
 
       <section class="newsletter">
-        <form method="post" action="action_page.php" name="newsletter">
+        <form name="newsletter" id="newsletter-form">
           <fieldset class="subscribe">
           <legend><strong>Newsletter Subscription</strong></legend>
         
           <label for="email" class="email">Email:</label>
           <input type="email" id="email" name="email" class="email" placeholder="you@adventure.com">
           <p class="newsletter-caption">Enter your email address to receive our monthly newsletter filled with product spotlights, exciting places to discover and monthly savings.</p>
-          <input type="submit" class="newsletter-button" value="Explore with us!">
+          <button type="submit" class="newsletter-button">Explore with us!</button>
         </fieldset>
           </form>
+
+          <div class="modal-container" id="thank-you-modal">
+            <div class="modal-content">
+              <p>Thank you for subscribing!</p>
+            </div>
+          </div>
       </section>
 
       <section class="wrapper active">
