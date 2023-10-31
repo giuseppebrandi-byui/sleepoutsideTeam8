@@ -39,7 +39,7 @@ export default async function productDetails(productId) {
   }
 }
 
-function addToCart() {
+export function addToCart() {
   let cart = getLocalStorage("so-cart");
   cart = cart ? getLocalStorage("so-cart") : [];
   //check if product is in the cart, if not add product

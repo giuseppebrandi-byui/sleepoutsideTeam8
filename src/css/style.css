@@ -179,14 +179,18 @@ span:hover {
   list-style-type: none;
   max-width: 1000px;
 }
-.product-list li{
- flex-grow: 1;
+.product-list li {
+  flex-grow: 1;
 }
 .product-list a {
   text-decoration: none;
   color: var(--dark-grey);
 }
 /* Styles for product lists */
+li.product-card {
+  display: flex;
+  flex-flow: column wrap;
+}
 .product-card {
   flex: 1 1 45%;
   margin: 0.25em;
@@ -207,6 +211,11 @@ span:hover {
 .card__name {
   font-size: 1em;
 }
+.quick-lookup {
+  margin-bottom: 1em;
+  font-size: var(--small-font);
+}
+
 /* End product list card */
 
 .product-detail {
@@ -375,10 +384,9 @@ footer {
   row-gap: 15px;
   justify-content: space-between;
 }
-.order-summary li{
+.order-summary li {
   display: flex;
 }
-
 
 form {
   max-width: 40rem;
@@ -414,7 +422,7 @@ form legend {
   padding: 0.75rem;
   color: #555;
   width: 100%;
-  
+
   background-color: rgba(0, 0, 0, 0.1);
 }
 
@@ -611,4 +619,69 @@ form input {
 .free-pass {
   font-size: 2rem;
   text-align: center;
+}
+/* quick view cards*/
+.lookup-wrapper {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 750px;
+  height: 50%;
+  border-radius: 12px;
+  padding: 20px 30px 70px;
+  background: var(--light-grey);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  visibility: hidden;
+  opacity: 0;
+}
+.lookup-wrapper-visible {
+  visibility: visible;
+  opacity: 1;
+}
+.lookup-content {
+  position: absolute;
+  background: var(--light-grey);
+  display: grid;
+  grid-template-columns: max-content 50% 5%;
+  grid-template-rows: max-content;
+  opacity: 50;
+  visibility: hidden;
+  margin-right: 1.5em;
+  justify-items: start;
+  border-radius: 12px;
+}
+.lookup-content-show {
+  visibility: visible;
+}
+#productImage {
+  grid-row: span 5/5;
+  margin: 0.5em;
+  max-width: 300px;
+  max-height: 300px;
+  border-radius: 12px;
+}
+#productName,
+#productMsrp,
+#productFinalPrice,
+#productSavings,
+#productDescriptionHtmlSimple,
+.goToProduct,
+.quickProduct {
+  grid-column: 2/3;
+  margin: 0;
+}
+#productName {
+  margin-top: 1em;
+}
+#productDescriptionHtmlSimple {
+  margin-bottom: 1em;
+}
+.modal-closer {
+  justify-self: center;
+  margin-top: 0.5em;
+}
+.quickProduct {
+  justify-self: center;
+  text-decoration: none;
 }
