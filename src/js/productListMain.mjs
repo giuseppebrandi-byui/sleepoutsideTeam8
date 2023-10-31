@@ -36,7 +36,7 @@ export default async function functionForMain(selector) {
 }
 
 // It filters the products according to the user input
-function filterProducts() {
+export function filterProducts() {
   var modal = document.getElementById("myModal");
   modal.style.display = "block";
   // Get the modal
