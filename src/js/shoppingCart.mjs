@@ -1,16 +1,20 @@
-import { getLocalStorage, setLocalStorage, renderListWithTemplate, cartCounter } from "./utils.mjs";
-
+import {
+  getLocalStorage,
+  setLocalStorage,
+  renderListWithTemplate,
+  cartCounter,
+} from "./utils.mjs";
 
 export default function ShoppingCart() {
   const cartItems = getLocalStorage("so-cart");
   const outputEl = document.querySelector(".product-list");
   renderListWithTemplate(cartItemTemplate, outputEl, cartItems);
-  
+
   let value = "";
   document.addEventListener("click", function (e) {
     if (e.target.classList.contains("cart-card__remover")) {
       let clickedOn = e.target.id;
-      cartItems.forEach(item => {
+      cartItems.forEach((item) => {
         if (item.Id == clickedOn) {
           value = cartItems.findIndex((element) => element.Id === clickedOn);
           return value;
@@ -18,19 +22,17 @@ export default function ShoppingCart() {
       });
       cartItems.splice(value, 1);
       setLocalStorage("so-cart", cartItems);
-      
     }
     renderListWithTemplate(cartItemTemplate, outputEl, cartItems);
     cartCounter();
     cartTotal();
 
-    window.location.reload(true);
-  })
-};
-
+    // window.location.reload(true);
+  });
+}
 
 function cartItemTemplate(item) {
-    const newItem = `<li class="cart-card divider">
+  const newItem = `<li class="cart-card divider">
       <a href="#" class="cart-card__image">
         <img
           src="${item.Images.PrimarySmall}"
@@ -44,11 +46,13 @@ function cartItemTemplate(item) {
       <span class="cart-card__remover" id="${item.Id}">&#10006</a></span>
       <button class="addButton" id="${item.Id}">&#x002B</button>
       <p class="cart-card__quantity">qty:${item.Quantity}</p>
-      <p class="cart-card__price">$${(item.FinalPrice * item.Quantity).toFixed(2)}</p>
+      <p class="cart-card__price">$${(item.FinalPrice * item.Quantity).toFixed(
+        2
+      )}</p>
       <button class="minusButton" id="${item.Id}">&#x2212</button>
     </li>`;
-  
-    return newItem;
+
+  return newItem;
 }
 
 export function cartTotal() {
@@ -58,14 +62,15 @@ export function cartTotal() {
   //setting the cart total to zero
   let totalCart = 0;
   //looping through to make sure that it adds all items in localStorage to add their final prices
-  
-  cart.forEach(item => {
+
+  cart.forEach((item) => {
     totalCart += item.FinalPrice * item.Quantity;
     return totalCart;
-  })
+  });
   //checking the total in my cart. If not 0, then display the total of the cart
-  document.querySelector(".cart-total").innerHTML = `Total: $${totalCart.toFixed(2)}`;
-  
+  document.querySelector(
+    ".cart-total"
+  ).innerHTML = `Total: $${totalCart.toFixed(2)}`;
 }
 cartTotal();
 
@@ -74,16 +79,14 @@ function addQuantity() {
   document.addEventListener("click", function (e) {
     if (e.target.classList.contains("addButton")) {
       let add = e.target.id;
-      let index = cart.findIndex(item => item.Id == add);
+      let index = cart.findIndex((item) => item.Id == add);
       let quantity = cart[index].Quantity;
       quantity++;
       cart[index].Quantity = quantity;
       setLocalStorage("so-cart", cart);
       document.location.reload();
     }
-  } 
-  );
- 
+  });
 }
 
 function minusQuantity() {
@@ -91,7 +94,7 @@ function minusQuantity() {
   document.addEventListener("click", function (e) {
     if (e.target.classList.contains("minusButton")) {
       let minus = e.target.id;
-      let index = cart.findIndex(item => item.Id == minus);
+      let index = cart.findIndex((item) => item.Id == minus);
       let quantity = cart[index].Quantity;
       --quantity;
       cart[index].Quantity = quantity;
@@ -100,16 +103,11 @@ function minusQuantity() {
       }
       setLocalStorage("so-cart", cart);
       document.location.reload();
-      
     }
-  }
-  );
-
+  });
 }
 
 addQuantity();
 minusQuantity();
 
-
 cartTotal();
-
