@@ -16,7 +16,6 @@
     <header class="divider" id="main-header"></header>
 
     <main class="divider">
-      
       <section class="checkout-form">
         <h2>Review & Place your Order</h2>
         <form
@@ -55,28 +54,27 @@
 
           <fieldset class="payment">
             <legend>Payment</legend>
-
             <label class="cardNum"
-              >Card Number*
-
-              <input type="text" id="cardnumber" name="cardnumber" required
+              >Card Number*<input
+                type="text"
+                id="cardnumber"
+                name="cardNumber"
+                required
             /></label>
-
             <label class="exp"
-              >Expiration*
-
-              <input
-                type="number"
+              >Expiration*<input
+                type="text"
                 id="exp-date"
                 name="expiration"
                 placeholder="MM / YY"
                 required
             /></label>
-
             <label class="code"
-              >Security Code*
-
-              <input type="password" id="security-code" name="code" required
+              >Security Code*<input
+                type="password"
+                id="security-code"
+                name="code"
+                required
             /></label>
           </fieldset>
 
@@ -84,28 +82,21 @@
             <legend>Order Summary</legend>
             <ul>
               <li>
-                <class="subtotal"
-                  >Item Subtotal(<span id="items"></span>)</label>
+                <p class="subtotal">Item Subtotal(<span id="items"></span>)</p>
               </li>
-              
-              <li><span id="price" name="price"></span></li>
-              
-              <li>
-                <class="shipping">Shipping Estimate</label>
 
-                
+              <li><span id="price" name="price"></span></li>
+
+              <li>
+                <p class="shipping">Shipping Estimate</p>
               </li>
               <li><span id="shippingamount" name="shipping"></span></li>
               <li>
-                <class="tax">Tax</label>
-
-                
+                <p class="tax">Tax</p>
               </li>
               <li><span id="tax" name="tax"></span></li>
               <li>
-                <class="total"> <b>Order Total</b></label>
-
-                
+                <p class="total"><b>Order Total</b></p>
               </li>
               <li><span id="orderTotal" name="orderTotal"></span></li>
             </ul>

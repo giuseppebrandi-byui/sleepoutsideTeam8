@@ -1,4 +1,4 @@
-import { getLocalStorage} from "./utils.mjs";
+import { getLocalStorage, setLocalStorage} from "./utils.mjs";
 import { checkout } from "./externalServices.mjs";
 
 function formDataToJSON(formElement) {
@@ -18,7 +18,7 @@ function packageItems(items) {
             id: item.Id,
             price: item.FinalPrice,
             name: item.Name,
-            quantity: 1,
+            quantity: item.Quantity,
         };
     });
     return cartItems;
@@ -71,7 +71,8 @@ const checkoutProcess = {
 
     checkout: async function (form) {
         const json = formDataToJSON(form);
-        json.orderDate = new Date();
+        const date = new Date();
+        json.orderDate = date.toISOString();
         json.orderTotal = this.orderTotal;
         json.tax = this.tax;
         json.shipping = this.shipping;
@@ -80,6 +81,8 @@ const checkoutProcess = {
         try {
             const res = await checkout(json);
             console.log(res);
+            setLocalStorage("so-cart", []);
+            location.assign("/checkout/success.html");
         } catch (err) {
             console.log(err);
         }

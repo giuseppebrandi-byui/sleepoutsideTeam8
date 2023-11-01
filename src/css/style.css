@@ -179,8 +179,8 @@ span:hover {
   list-style-type: none;
   max-width: 1000px;
 }
-.product-list li{
- flex-grow: 1;
+.product-list li {
+  flex-grow: 1;
 }
 .product-list a {
   text-decoration: none;
@@ -301,7 +301,9 @@ span.cart-card__remover {
   margin-bottom: 0;
   padding: 1em;
 }
-
+.checkoutBtn {
+  text-decoration: none;
+}
 @media screen and (min-width: 500px) {
   body {
     max-width: 1080px;
@@ -375,10 +377,9 @@ footer {
   row-gap: 15px;
   justify-content: space-between;
 }
-.order-summary li{
+.order-summary li {
   display: flex;
 }
-
 
 form {
   max-width: 40rem;
@@ -414,7 +415,7 @@ form legend {
   padding: 0.75rem;
   color: #555;
   width: 100%;
-  
+
   background-color: rgba(0, 0, 0, 0.1);
 }
 
@@ -611,4 +612,8 @@ form input {
 .free-pass {
   font-size: 2rem;
   text-align: center;
+}
+.successMessage {
+  text-align: center;
+  margin-top: 5em;
 }
