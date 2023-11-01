@@ -1,6 +1,7 @@
 import { getParam, loadHeaderFooter, cartCounter } from "./utils.mjs";
 import productDetails from "./productDetails.mjs";
 import { getProductsByCategory } from "./externalServices.mjs";
+import getRecommendProducts from "./productListRecommended.mjs";
 
 const headerFooter = async () => {
   await loadHeaderFooter();
@@ -8,7 +9,8 @@ const headerFooter = async () => {
 headerFooter();
 cartCounter();
 const productId = getParam("product");
-productDetails(productId);
+let productInfo = productDetails(productId);
+getRecommendProducts((await productInfo).Category);
 
 async function addDiscountSticker() {
   const products = await getProductsByCategory();

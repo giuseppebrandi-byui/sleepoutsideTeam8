@@ -208,23 +208,28 @@ span:hover {
   max-width: 600px;
   margin: auto;
 }
-.products {
+.products,
+.recommended {
   padding: 0.5em;
 }
-.product-list {
+.product-list,
+.recommended-products {
   display: flex;
   flex-flow: row wrap;
   justify-content: stretch;
   list-style-type: none;
   max-width: 1000px;
 }
-.product-list li {
+.product-list li,
+.recommended-products li {
   flex-grow: 1;
 }
-.product-list a {
+.product-list a,
+.recommended-products a {
   text-decoration: none;
   color: var(--dark-grey);
 }
+
 /* Styles for product lists */
 .product-card {
   flex: 1 1 45%;
