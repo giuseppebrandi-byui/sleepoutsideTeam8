@@ -65,7 +65,7 @@ function renderProductDetails() {
   const largeScreen = window.matchMedia("(min-width: 768px)");
   const mediumScreen = window.matchMedia("(min-width: 320px)");
   document.querySelector(".product-category").innerText =
-    product.Category.replace('-', ' ').replace(/(?:^|\s)\S/g, a => a.toUpperCase())
+    product.Category.replace("-", " ").replace(/(?:^|\s)\S/g, a => a.toUpperCase())
       
 
   document.querySelector("#productName").innerText = product.Brand.Name;
