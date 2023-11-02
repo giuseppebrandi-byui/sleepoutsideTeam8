@@ -31,32 +31,29 @@ export default async function getRecommendProducts(category) {
   }
 
   let threeProductsOnly = [];
-  // products[getRandomInt(products.length)],
-  // products[getRandomInt(products.length)],
-  // products[getRandomInt(products.length)],
-
   while (threeProductsOnly.length < 3) {
-    if (threeProductsOnly.length === 0) {
-      threeProductsOnly.push(products[getRandomInt(products.length)]);
-      continue;
-    }
-    let newProduct = products[getRandomInt(products.length)];
-    if (!threeProductsOnly.includes(newProduct)) {
-      threeProductsOnly.push(newProduct);
-      continue;
+    let randomInt = getRandomInt(products.length);
+    if (threeProductsOnly.indexOf(randomInt) == -1) {
+      threeProductsOnly.push(randomInt);
     }
   }
 
-  filterProducts(threeProductsOnly);
+  filterProducts(
+    new Array(
+      products[threeProductsOnly[0]],
+      products[threeProductsOnly[1]],
+      products[threeProductsOnly[2]]
+    )
+  );
 }
 
-// It filters the products according to the user input
 export function filterProducts(threeProductsOnly) {
   const el = document.querySelector(".recommended-products");
   renderListWithTemplate(productCardTemplate, el, threeProductsOnly);
   const productList = document.querySelector(".recommended-products");
 }
 
+// It gets a random integer from zero to max
 function getRandomInt(max) {
   return Math.floor(Math.random() * max);
 }
