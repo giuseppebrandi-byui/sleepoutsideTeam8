@@ -222,6 +222,9 @@ span:hover {
   list-style-type: none;
   max-width: 1000px;
 }
+.recommended-products {
+  justify-content: center;
+}
 .product-list li,
 .product-list-header li,
 .recommended-products li {
