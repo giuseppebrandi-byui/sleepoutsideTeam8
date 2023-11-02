@@ -142,9 +142,10 @@ button {
   color: white;
 }
 
-.modal-container {
+.modal-content {
   display: none;
   position: fixed;
+  z-index: 1;
   background-color: rgb(202, 219, 223);
   font-size: 3rem;
   border-radius: 20px;
