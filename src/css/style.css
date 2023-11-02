@@ -668,3 +668,21 @@ form input {
   font-size: 2rem;
   text-align: center;
 }
+
+/*Modal for Geri*/
+.modal-newsletter {
+  display: none;
+}
+
+.modal-newsletter-content {
+  text-align: center;
+  background-color: rgb(202, 219, 223);
+  max-width: 20rem;
+  padding: 0.5rem 0;
+  margin: 0 auto;
+}
+
+.newsLetterCloseBtn {
+  margin-right: 10px;
+  float: right;
+}
