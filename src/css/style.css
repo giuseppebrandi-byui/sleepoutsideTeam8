@@ -220,9 +220,11 @@ span:hover {
   flex-flow: row wrap;
   justify-content: stretch;
   list-style-type: none;
-  max-width: 1000px;
+  max-width: 1350px;
+  padding-left: 0;
 }
-.recommended-products {
+.recommended-products,
+.product-list-header {
   justify-content: center;
 }
 .product-list li,
