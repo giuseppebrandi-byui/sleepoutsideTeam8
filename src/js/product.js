@@ -6,13 +6,13 @@ import functionForMain from "./productListMain.mjs";
 
 const headerFooter = async () => {
   await loadHeaderFooter();
+  const productId = getParam("product");
+  let productInfo = productDetails(productId);
+  getRecommendProducts((await productInfo).Category);
 };
 headerFooter();
 cartCounter();
 functionForMain();
-const productId = getParam("product");
-let productInfo = productDetails(productId);
-getRecommendProducts((await productInfo).Category);
 
 async function addDiscountSticker() {
   const products = await getProductsByCategory();
