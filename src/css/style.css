@@ -209,10 +209,12 @@ span:hover {
   margin: auto;
 }
 .products,
-.recommended {
+.recommended,
+.products-header {
   padding: 0.5em;
 }
 .product-list,
+.product-list-header,
 .recommended-products {
   display: flex;
   flex-flow: row wrap;
@@ -221,17 +223,20 @@ span:hover {
   max-width: 1000px;
 }
 .product-list li,
+.product-list-header li,
 .recommended-products li {
   flex-grow: 1;
 }
 .product-list a,
+.product-list-header a,
 .recommended-products a {
   text-decoration: none;
   color: var(--dark-grey);
 }
 
 /* Styles for product lists */
-.product-card {
+.product-card,
+.product-card-header {
   flex: 1 1 45%;
   margin: 0.25em;
   padding: 0.5em;
@@ -239,8 +244,11 @@ span:hover {
   max-width: 250px;
 }
 .product-card h2,
+.product-card-header h2,
 .product-card h3,
-.product-card p {
+.product-card-header h3,
+.product-card p,
+.product-card-header p {
   margin: 0.5em 0;
 }
 

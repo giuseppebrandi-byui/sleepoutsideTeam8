@@ -2,12 +2,14 @@ import { getParam, loadHeaderFooter, cartCounter } from "./utils.mjs";
 import productDetails from "./productDetails.mjs";
 import { getProductsByCategory } from "./externalServices.mjs";
 import getRecommendProducts from "./productListRecommended.mjs";
+import functionForMain from "./productListMain.mjs";
 
 const headerFooter = async () => {
   await loadHeaderFooter();
 };
 headerFooter();
 cartCounter();
+functionForMain();
 const productId = getParam("product");
 let productInfo = productDetails(productId);
 getRecommendProducts((await productInfo).Category);
