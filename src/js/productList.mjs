@@ -20,8 +20,8 @@ function productCardTemplate(product) {
               <p class="card__description" style="display:none">${
                 product.DescriptionHtmlSimple
               }</p>
-              <p class="msrp">$${product.SuggestedRetailPrice}</p>
-              <p class="product-card__price">$${product.FinalPrice}</p></a>
+              <p class="msrp">$${product.SuggestedRetailPrice.toFixed(2)}</p>
+              <p class="product-card__price">$${product.FinalPrice.toFixed(2)}</p></a>
               <p class="product-card__discount">You save $${(
                 product.SuggestedRetailPrice - product.FinalPrice
               ).toFixed(2)}</li>`;
@@ -45,7 +45,7 @@ export default async function productList(selector, category) {
   // It displays the full list of products by category
   renderListWithTemplate(productCardTemplate, el, products);
   document.querySelector(".title").innerHTML =
-    category.replace('-', ' ').replace(/(?:^|\s)\S/g, a => a.toUpperCase()) + "(" + products.length + ")";
+    category.replace("-", " ").replace(/(?:^|\s)\S/g, a => a.toUpperCase()) + "(" + products.length + ")";
 
   // It displays products depending on the user input
   if (window.location.search.split("?q=")[1]) filterProducts();

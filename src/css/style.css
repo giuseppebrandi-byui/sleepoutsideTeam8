@@ -309,16 +309,21 @@ span:hover {
   text-decoration-thickness: 2px;
 }
 
-.discount-sticker {
+.discount-label {
+  background-color: crimson;
+  padding: -20px 0px 0px 10px;
+  height: 10%;
+  width: 5%;
+  color: #ffffff;
+  font-size: 1.4rem;
+  border-radius: 50%;
+  margin: -5px 375px;
   position: absolute;
-  top: 10px;
-  right: 10px;
-  background: yellow;
-  color: #333;
-  padding: 5px 10px;
-  font-size: 0.9rem;
-  border-radius: 3px;
+  z-index: 10;
+  text-shadow: 1px 0.5px 0.5px #000;
 }
+
+
 
 /* Start cart list card styles */
 .product-category {
@@ -379,6 +384,7 @@ span.cart-card__remover {
   margin-bottom: 0;
   padding: 1em;
 }
+
 .checkoutBtn {
   text-decoration: none;
 }
@@ -661,6 +667,7 @@ form input {
   font-size: 2rem;
   text-align: center;
 }
+
 .successMessage {
   text-align: center;
   background-color: rgb(202, 219, 223);

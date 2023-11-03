@@ -26,6 +26,7 @@ export default async function productDetails(productId) {
   if (product !== undefined) {
     // once we have the product details we can render out the HTML
     renderProductDetails();
+    addDiscountFlag();
     // once the HTML is rendered we can add a listener to Add to Cart button
     document.getElementById("addToCart").addEventListener("click", addToCart);
   } else {
@@ -88,7 +89,7 @@ function renderProductDetails() {
   ).innerText = `$${product.SuggestedRetailPrice.toFixed(2)}`;
   document.querySelector(
     "#productFinalPrice"
-  ).innerText = `$${product.FinalPrice}`;
+  ).innerText = `$${product.FinalPrice.toFixed(2)}`;
   document.querySelector("#productSavings").innerText = `You save $${(
     product.SuggestedRetailPrice - product.FinalPrice
   ).toFixed(2)}`;
@@ -97,6 +98,28 @@ function renderProductDetails() {
   document.querySelector("#productDescriptionHtmlSimple").innerHTML =
     product.DescriptionHtmlSimple;
   document.querySelector("#addToCart").dataset.id = product.Id;
+}
+
+function addDiscountFlag() {
+
+  const originalPrice = product.SuggestedRetailPrice;
+  const salePrice = product.FinalPrice;
+
+  const discount = Math.round((originalPrice - salePrice) / originalPrice * 100);
+
+  const flag = `Save ${discount}%`;
+
+  // if (discount >= 0 && discount <= 4) {
+  //   flag = "low value";
+  // } else if (discount >= 5 && discount <= 14) {
+  //   flag = "moderate value";
+  // } else if (discount >= 15 && discount <= 24) {
+  //   flag = "good value";
+  // } else if (discount >= 25) {
+  //   flag = "excellent value";
+  // }
+
+  document.querySelector(".discount-flag").innerHTML = flag;
 }
 
 cartCounter();
