@@ -1,23 +1,17 @@
 // Getting the modal elements after the user has clicked on the newsletter subscription box
 
-document.addEventListener("DOMContentLoaded", () => {
-  // const form = document.querySelector("newsletter-form");
-  const button = document.querySelector(".newsletter-button");
+const newsletterForm = document.querySelector("#newsletter-form");
+const modal = document.querySelector("#thank-you-modal");
 
-  // This is to show the modal box on form submit
-  button.addEventListener("submit", (e) => {
-    e.preventDefault();
-    showModal();
-  });
-
-  function showModal() {
-    const modal = document.getElementById("thank-you-modal");
-
+newsletterForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+  let emailNewsLetter = document.querySelector("[name=email]").value;
+  if (emailNewsLetter !== "") {
     modal.style.display = "block";
   }
-
-  // This is to hide the modal box when you click it
-  // modal.addEventListener("click", () => {
-  //     modal.style.display = "none";
-  // });
+  const newsLetterCloseBtn = document.querySelector(".newsLetterCloseBtn");
+  newsLetterCloseBtn.addEventListener("click", () => {
+    modal.style.display = "none";
+    newsletterForm.reset();
+  });
 });

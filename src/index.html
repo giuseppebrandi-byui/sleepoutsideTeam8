@@ -8,8 +8,8 @@
 
     <script src="/js/main.js" type="module"></script>
     <script src="/js/alert.js" type="module"></script>
+    <script src="/js/newsletter.js" type="module"></script>
     <script src="/js/register-site.js" type="module"></script>
-    <script src="/js/newsletter.js"></script>
   </head>
   <body>
     <header class="divider" id="main-header"></header>
@@ -85,6 +85,13 @@
         </ul>
       </section>
 
+      <div class="modal-newsletter" id="thank-you-modal">
+        <div class="modal-newsletter-content">
+          <span class="newsLetterCloseBtn">&times;</span>
+          <p>Thank you for subscribing!</p>
+        </div>
+      </div>
+
       <section class="newsletter">
         <form name="newsletter" id="newsletter-form">
           <fieldset class="subscribe">
@@ -97,23 +104,23 @@
               name="email"
               class="email"
               placeholder="you@adventure.com"
+              required
             />
             <p class="newsletter-caption">
               Enter your email address to receive our monthly newsletter filled
               with product spotlights, exciting places to discover and monthly
               savings.
             </p>
-            <button type="submit" class="newsletter-button">
+            <input
+              type="submit"
+              value="Explore with us!"
+              class="newsletter-button"
+            />
+            <!-- <button type="submit" class="newsletter-button">
               Explore with us!
-            </button>
+            </button> -->
           </fieldset>
         </form>
-
-        <div class="modal-container" id="thank-you-modal">
-          <div class="modal-content">
-            <p>Thank you for subscribing!</p>
-          </div>
-        </div>
       </section>
 
       <section class="wrapper active">
