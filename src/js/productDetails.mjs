@@ -1,5 +1,5 @@
 import { findProductById } from "./externalServices.mjs";
-import { getLocalStorage, setLocalStorage, cartCounter } from "./utils.mjs";
+import { getLocalStorage, setLocalStorage, cartCounter, alertMessage } from "./utils.mjs";
 
 // Grab a reference to the cart button, the h2 element, and the product details
 // section
@@ -54,16 +54,20 @@ function addToCart() {
     cart.push(product);
   }
   setLocalStorage("so-cart", cart);
-  cartCounter();
-}
+
+  cartCounter(); 
+  alertMessage(`${product.NameWithoutBrand} added to cart!`);
+};
+
 
 function renderProductDetails() {
   const largeScreen = window.matchMedia("(min-width: 768px)");
   const mediumScreen = window.matchMedia("(min-width: 320px)");
   document.querySelector(".product-category").innerText =
-    product.Category.replace("-", " ").replace(/(?:^|\s)\S/g, (a) =>
-      a.toUpperCase()
-    );
+
+    product.Category.replace("-", " ").replace(/(?:^|\s)\S/g, a => a.toUpperCase())
+      
+
 
   document.querySelector("#productName").innerText = product.Brand.Name;
   document.querySelector("#productNameWithoutBrand").innerText =
