@@ -142,13 +142,32 @@ p.newsletter-caption {
   color: white;
 }
 
-.modal-container {
+.modal-newsletter {
+  display: none;
+}
+
+.modal-newsletter-content {
+  text-align: center;
+  background-color: rgb(202, 219, 223);
+  max-width: 20rem;
+  padding: 0.5rem 0;
+  margin: 0 auto;
+  border-radius: 15px;
+  font-size: 1.25rem;
+}
+
+.newsLetterCloseBtn {
+  margin-right: 10px;
+  float: right;
+}
+
+/* .modal-container {
   display: none;
   position: fixed;
   background-color: rgb(202, 219, 223);
   font-size: 3rem;
   border-radius: 20px;
-}
+} */
 
 .divider {
   border-bottom: 2px solid var(--primary-color);
