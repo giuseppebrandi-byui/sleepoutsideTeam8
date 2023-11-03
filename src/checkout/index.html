@@ -14,7 +14,15 @@
 
   <body>
     <header class="divider" id="main-header"></header>
-
+    <div id="myModal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <section class="products-header">
+          <ul class="product-list-header"></ul>
+          <ul id="all-products"></ul>
+        </section>
+      </div>
+    </div>
     <main class="divider">
       <section class="checkout-form">
         <h2>Review & Place your Order</h2>
@@ -58,7 +66,9 @@
               >Card Number*<input
                 type="text"
                 id="cardnumber"
+
                 name="cardNumber"
+
                 required
             /></label>
             <label class="exp"
@@ -66,7 +76,7 @@
                 type="text"
                 id="exp-date"
                 name="expiration"
-                placeholder="MM / YY"
+                placeholder="MM/YY"
                 required
             /></label>
             <label class="code"
@@ -82,7 +92,9 @@
             <legend>Order Summary</legend>
             <ul>
               <li>
+
                 <p class="subtotal">Item Subtotal(<span id="items"></span>)</p>
+
               </li>
 
               <li><span id="price" name="price"></span></li>

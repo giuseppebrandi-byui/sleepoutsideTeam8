@@ -4,7 +4,7 @@ import { renderListWithTemplate } from "./utils.mjs";
 var products;
 
 function productCardTemplate(product) {
-  return `<li class="product-card">
+  return `<li class="product-card-header">
             <a href="../product_pages/index.html?product=${product.Id}">
               <img
                 src="${product.Images.PrimaryMedium}"
@@ -36,10 +36,9 @@ export default async function functionForMain(selector) {
 }
 
 // It filters the products according to the user input
-function filterProducts() {
+export function filterProducts() {
   var modal = document.getElementById("myModal");
   modal.style.display = "block";
-  // Get the modal
 
   // Get the <span> element that closes the modal
   var span = document.getElementsByClassName("close")[0];
@@ -56,12 +55,12 @@ function filterProducts() {
     }
   };
 
-  const el = document.querySelector(".product-list");
+  const el = document.querySelector(".product-list-header");
   renderListWithTemplate(productCardTemplate, el, products);
 
-  const productList = document.querySelector(".product-list");
+  const productList = document.querySelector(".product-list-header");
   let filterValue = filterInput.value.toUpperCase();
-  let item = productList.querySelectorAll(".product-card");
+  let item = productList.querySelectorAll(".product-card-header");
   for (let i = 0; i < item.length; i++) {
     let brand = item[i].querySelector(".card__brand");
     let nameWithoutBrand = item[i].querySelector(".card__name");
@@ -80,7 +79,7 @@ function filterProducts() {
   var showUrl;
   showUrl = false;
 
-  document.querySelectorAll(".product-card").forEach((e) => {
+  document.querySelectorAll(".product-card-header").forEach((e) => {
     if (e.getAttribute("style") != "display: none;") {
       showUrl = true;
     }
