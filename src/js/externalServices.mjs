@@ -32,6 +32,17 @@ export async function findProductById(id) {
   return product.Result;
 }
 export async function checkout(payload) {
+  if (baseURL.endsWith("/")) {
+    const options = {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify(payload),
+    };
+    return await fetch(baseURL + "checkout", options).then(convertToJson);
+  }
+  
   const options = {
     method: "POST",
     headers: {
@@ -39,5 +50,6 @@ export async function checkout(payload) {
     },
     body: JSON.stringify(payload),
   };
-  return await fetch(baseURL + "checkout/", options).then(convertToJson);
+  return await fetch(baseURL + "/" + "checkout", options).then(convertToJson);
+  
 }
