@@ -250,7 +250,6 @@ span:hover {
 .product-list li,
 .product-list-header li,
 .recommended-products li {
-
   flex-grow: 1;
 }
 .product-list a,
