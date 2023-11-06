@@ -1,5 +1,5 @@
 import { findProductById } from "./externalServices.mjs";
-import { getLocalStorage, setLocalStorage, cartCounter } from "./utils.mjs";
+import { getLocalStorage, setLocalStorage, cartCounter, alertMessage } from "./utils.mjs";
 
 // Grab a reference to the cart button, the h2 element, and the product details
 // section
@@ -16,7 +16,6 @@ div.innerHTML = `<img src="../images/not-found.jpg">`;
 
 let product = {};
 
-
 export default async function productDetails(productId) {
   try {
     // get the details for the current product. findProductById will return a promise! use await or .then() to process it
@@ -27,9 +26,9 @@ export default async function productDetails(productId) {
   if (product !== undefined) {
     // once we have the product details we can render out the HTML
     renderProductDetails();
+    addDiscountFlag();
     // once the HTML is rendered we can add a listener to Add to Cart button
-    document.getElementById("addToCart").addEventListener("click", addToCart)
-    
+    document.getElementById("addToCart").addEventListener("click", addToCart);
   } else {
     // Append div with images to the product detail section
     productDetailSection.append(div);
@@ -37,6 +36,7 @@ export default async function productDetails(productId) {
     h2.classList.add("hidden");
     cartButton.classList.add("hidden");
   }
+  return product;
 }
 
 export function addToCart() {
@@ -44,29 +44,31 @@ export function addToCart() {
   cart = cart ? getLocalStorage("so-cart") : [];
   //check if product is in the cart, if not add product
   let p = product.Id;
-  let found = cart.some(item => item.Id == p);
-  if (found){
-    let index = cart.findIndex(item => item.Id == product.Id);
+  let found = cart.some((item) => item.Id == p);
+  if (found) {
+    let index = cart.findIndex((item) => item.Id == product.Id);
     let quantity = cart[index].Quantity;
     quantity++;
     cart[index].Quantity = quantity;
   } else {
     product.Quantity = 1;
     cart.push(product);
-  }  
+  }
   setLocalStorage("so-cart", cart);
-  cartCounter(); 
-  
-};
 
+  cartCounter(); 
+  alertMessage(`${product.NameWithoutBrand} added to cart!`);
+};
 
 
 function renderProductDetails() {
   const largeScreen = window.matchMedia("(min-width: 768px)");
   const mediumScreen = window.matchMedia("(min-width: 320px)");
   document.querySelector(".product-category").innerText =
-    product.Category.replace('-', ' ').replace(/(?:^|\s)\S/g, a => a.toUpperCase())
+
+    product.Category.replace("-", " ").replace(/(?:^|\s)\S/g, a => a.toUpperCase())
       
+
 
   document.querySelector("#productName").innerText = product.Brand.Name;
   document.querySelector("#productNameWithoutBrand").innerText =
@@ -82,9 +84,15 @@ function renderProductDetails() {
   }
 
   document.querySelector("#productImage").alt = product.Name;
-  document.querySelector("#productMsrp").innerText = `$${product.SuggestedRetailPrice.toFixed(2)}`;
-  document.querySelector("#productFinalPrice").innerText = `$${product.FinalPrice}`;
-  document.querySelector("#productSavings").innerText = `You save $${(product.SuggestedRetailPrice - product.FinalPrice).toFixed(2)}`;
+  document.querySelector(
+    "#productMsrp"
+  ).innerText = `$${product.SuggestedRetailPrice.toFixed(2)}`;
+  document.querySelector(
+    "#productFinalPrice"
+  ).innerText = `$${product.FinalPrice.toFixed(2)}`;
+  document.querySelector("#productSavings").innerText = `You save $${(
+    product.SuggestedRetailPrice - product.FinalPrice
+  ).toFixed(2)}`;
   document.querySelector("#productColorName").innerText =
     product.Colors[0].ColorName;
   document.querySelector("#productDescriptionHtmlSimple").innerHTML =
@@ -92,6 +100,26 @@ function renderProductDetails() {
   document.querySelector("#addToCart").dataset.id = product.Id;
 }
 
+function addDiscountFlag() {
+
+  const originalPrice = product.SuggestedRetailPrice;
+  const salePrice = product.FinalPrice;
+
+  const discount = Math.round((originalPrice - salePrice) / originalPrice * 100);
+
+  const flag = `Save ${discount}%`;
+
+  // if (discount >= 0 && discount <= 4) {
+  //   flag = "low value";
+  // } else if (discount >= 5 && discount <= 14) {
+  //   flag = "moderate value";
+  // } else if (discount >= 15 && discount <= 24) {
+  //   flag = "good value";
+  // } else if (discount >= 25) {
+  //   flag = "excellent value";
+  // }
+
+  document.querySelector(".discount-flag").innerHTML = flag;
+}
+
 cartCounter();
-
-

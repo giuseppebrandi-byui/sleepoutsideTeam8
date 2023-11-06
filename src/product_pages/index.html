@@ -15,7 +15,15 @@
 
   <body>
     <header class="divider" id="main-header"></header>
-
+    <div id="myModal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <section class="products-header">
+          <ul class="product-list-header"></ul>
+          <ul id="all-products"></ul>
+        </section>
+      </div>
+    </div>
     <main class="divider">
       <section class="product-detail">
         <h2><span class="product-category"></span></h2>
@@ -23,7 +31,9 @@
         <h3 id="productName"></h3>
 
         <h2 class="divider" id="productNameWithoutBrand"></h2>
-
+        <div class="discount-label">
+        <p class="discount-flag"></p>
+        </div>
         <img id="productImage" class="divider" src="" alt="" />
 
         <p class="product-card__msrp" id="productMsrp"></p>
@@ -39,6 +49,12 @@
         <div class="product-detail__add">
           <button id="addToCart" data-id="344YJ">Add to Cart</button>
         </div>
+      </section>
+
+      <section class="recommended">
+        <ul class="recommended-products">
+          <li><!--Code goes here --></li>
+        </ul>
       </section>
     </main>
 

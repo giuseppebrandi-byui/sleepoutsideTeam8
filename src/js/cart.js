@@ -1,5 +1,6 @@
 import { loadHeaderFooter, cartCounter, cartTotal } from "./utils.mjs";
 import shoppingCart from "./shoppingCart.mjs";
+import functionForMain from "./productListMain.mjs";
 
 const headerFooter = async () => {
   await loadHeaderFooter();
@@ -8,5 +9,6 @@ const headerFooter = async () => {
 headerFooter();
 
 shoppingCart();
+functionForMain();
 cartCounter();
 cartTotal();
