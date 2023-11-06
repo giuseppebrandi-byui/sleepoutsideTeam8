@@ -23,8 +23,9 @@ function productCardTemplate(product) {
               <p class="msrp">$${product.SuggestedRetailPrice.toFixed(2)}</p>
               <p class="product-card__price">$${product.FinalPrice.toFixed(2)}</p></a>
               <p class="product-card__discount">You save $${(
-                product.SuggestedRetailPrice - product.FinalPrice
-              ).toFixed(2)}</li>`;
+                product.SuggestedRetailPrice - product.FinalPrice).toFixed(2)}</p>
+              <button class="quick-lookup" id ="${product.Id}">Quick View</button></li>
+              `;
 }
 
 export default async function productList(selector, category) {
@@ -65,6 +66,40 @@ export default async function productList(selector, category) {
     renderListWithTemplate(productCardTemplate, el, products);
     if (window.location.search.split("?q=")[1]) filterProducts();
   });
+  let value = {};
+const modal = document.querySelector(".lookup-wrapper");
+const modalContent = document.querySelector(".lookup-content"); 
+const name = document.querySelector("#productName");  
+const image = document.querySelector("#productImage")
+const msrp = document.querySelector("#productMsrp")
+const price = document.querySelector("#productFinalPrice")
+const descrip = document.querySelector("#productDescriptionHtmlSimple")
+  const savings = document.querySelector("#productSavings");
+  const close = document.querySelector(".modal-closer");
+  const link = document.querySelector(".quickProduct");
+  document.addEventListener("click", function (e) {
+    if (e.target.classList.contains("quick-lookup")) {
+      let clickedOn = e.target.id;
+      value = products.filter(item => item.Id == clickedOn);
+          console.log(value);
+      modal.classList.add("lookup-wrapper-visible");
+      modalContent.classList.add("lookup-content-show");
+      name.innerText = value[0].Name;
+      image.src = value[0].Images.PrimaryLarge;
+      image.alt = value[0].Name;
+      msrp.innerText = `$${value[0].SuggestedRetailPrice}`;
+      savings.innerText = `You save $${(value[0].SuggestedRetailPrice - value[0].FinalPrice).toFixed(2)}`; 
+      price.innerText = `$${value[0].FinalPrice}`;
+      descrip.innerHTML = value[0].DescriptionHtmlSimple;   
+      link.href = "../product_pages/index.html?product=" + value[0].Id;
+        
+    }
+     
+  })
+  close.addEventListener("click", () => {
+    modal.classList.remove("lookup-wrapper-visible");
+    modalContent.classList.remove("lookup-content-show");
+  })
 }
 
 // It filters the products according to the user input
@@ -91,3 +126,4 @@ function filterProducts() {
     }
   }
 }
+
