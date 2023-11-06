@@ -743,7 +743,7 @@ form input {
 .quickProduct {
   justify-self: center;
   text-decoration: none;
-=======
+
 
 .successMessage {
   text-align: center;
@@ -798,4 +798,5 @@ footer {
   font-size: var(--small-font);
   padding: 1em;
 
+}
 }
