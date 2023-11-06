@@ -50,6 +50,7 @@ header {
 }
 .hero {
   position: relative;
+  align-content: center;
 }
 .hero .logo {
   position: absolute;
@@ -104,6 +105,7 @@ button {
 .alert-list {
   padding: 15px;
   border-radius: 4px;
+ 
 }
 
 .closeBtn {
@@ -743,9 +745,9 @@ form input {
 .quickProduct {
   justify-self: center;
   text-decoration: none;
+}
 
-
-.successMessage {
+.success-message {
   text-align: center;
   background-color: rgb(202, 219, 223);
   width: 50%;
@@ -798,5 +800,4 @@ footer {
   font-size: var(--small-font);
   padding: 1em;
 
-}
 }
