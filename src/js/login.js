@@ -1,4 +1,5 @@
 import { loadHeaderFooter, getParam } from "./utils.mjs";
+import { login } from "./auth.mjs";
 
 const headerFooter = async () => {
   await loadHeaderFooter();
@@ -14,5 +15,6 @@ loginBtn.addEventListener("click", (e) => {
   e.preventDefault();
   const emailValue = document.querySelector("#loginEmail").value;
   const passwordValue = document.querySelector("#loginPassword").value;
-  // loginBtn({ email: emailValue, password: passwordValue }, redirectAddress);
+  // console.log(emailValue, passwordValue);
+  login({ emailValue, passwordValue }, redirectAddress);
 });
