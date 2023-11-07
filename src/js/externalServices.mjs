@@ -10,16 +10,15 @@ async function convertToJson(res) {
 }
 
 export async function getProductsByCategory(category) {
-  if (baseURL.endsWith("/")){
+  if (baseURL.endsWith("/")) {
     const response = await fetch(baseURL + `products/search/${category}`);
     const data = await convertToJson(response);
     return data.Result;
-  } 
+  }
   const response = await fetch(baseURL + "/" + `products/search/${category}`);
   const data = await convertToJson(response);
   return data.Result;
 }
-
 
 export async function findProductById(id) {
   if (baseURL.endsWith("/")) {
@@ -32,17 +31,28 @@ export async function findProductById(id) {
   return product.Result;
 }
 export async function checkout(payload) {
-    const options = {
-      method: "POST",
-      headers: {
-        "Content-type": "application/json",
-      },
-      body: JSON.stringify(payload),
-    };
+  const options = {
+    method: "POST",
+    headers: {
+      "Content-type": "application/json",
+    },
+    body: JSON.stringify(payload),
+  };
 
-     let callUrl = baseURL;
-     if (!baseURL.endsWith("/"))
-     callUrl += "/";
-    return await fetch(callUrl + "checkout", options).then(convertToJson);
-    
+  let callUrl = baseURL;
+  if (!baseURL.endsWith("/")) callUrl += "/";
+  return await fetch(callUrl + "checkout", options).then(convertToJson);
+}
+
+export async function loginRequest(creds) {
+  const options = {
+    method: "POST",
+    headers: {
+      "Content-type": "application/json",
+    },
+    body: JSON.stringify(creds),
+  };
+  let callUrl = baseURL;
+  if (!baseURL.endsWith("/")) callUrl += "/";
+  return await fetch(callUrl + "login", options).then(convertToJson);
 }
