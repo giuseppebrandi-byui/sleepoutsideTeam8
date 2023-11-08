@@ -7,7 +7,6 @@ const headerFooter = async () => {
 
 headerFooter();
 const redirectAddress = getParam("redirect");
-console.log("redirectAddress: ", redirectAddress);
 
 const loginBtn = document.querySelector(".loginBtn");
 

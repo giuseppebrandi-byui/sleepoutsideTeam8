@@ -607,10 +607,15 @@ input#filterInput {
   opacity: 0;
 }
 
-.wrapper form {
+.wrapper form,
+.login-form {
   display: flex;
   flex-direction: column;
   gap: 20px;
+}
+
+.login-form {
+  margin: 4rem auto;
 }
 
 form input {
@@ -625,7 +630,8 @@ form input {
   background: #fff;
 }
 
-.signupBtn {
+.signupBtn,
+.loginBtn {
   margin-top: 15px;
   background-color: var(--secondary-color);
   color: #fff;
