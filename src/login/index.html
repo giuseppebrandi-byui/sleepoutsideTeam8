@@ -5,28 +5,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sleep Outside | Login page</title>
     <link rel="stylesheet" href="/css/style.css" />
-    <script src="/js/login.js" type="module"></script>
+    <script src="../js/login.js" type="module"></script>
   </head>
   <body>
     <header class="divider" id="main-header"></header>
     <main class="divider">
-      <form action="#" class="login-form">
-        <input
+      <fieldset class="login-form">
+        <legend>Login</legend>
+        <p>
+          <label for="email">Email</label>
+          <input
           type="email"
           id="loginEmail"
           name="email"
           placeholder="Enter your email address"
+          value="user1@email.com"
           required
         />
-        <input
+        </p>
+        <p>
+          <label for="password">Password</label>
+         <input
           type="password"
           id="loginPassword"
           name="password"
           placeholder="Enter your password"
           required
         />
-        <input type="submit" value="Login" class="loginBtn" />
-      </form>
+        </p>
+       
+        <button type="submit" value="Login" class="loginBtn">Login</button>
+      </fieldset>
     </main>
     <footer id="main-footer"></footer>
   </body>

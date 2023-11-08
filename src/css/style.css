@@ -801,3 +801,8 @@ footer {
   font-size: var(--small-font);
   padding: 1em;
 }
+/* order page formatting*/
+#orders{
+  text-align: center;
+
+}
