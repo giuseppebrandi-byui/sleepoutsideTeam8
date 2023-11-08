@@ -14,9 +14,10 @@ export default function ShoppingCart() {
   document.addEventListener("click", function (e) {
     if (e.target.classList.contains("cart-card__remover")) {
       let clickedOn = e.target.id;
+      let clickedColor = e.target.name;
       cartItems.forEach((item) => {
         if (item.Id == clickedOn) {
-          value = cartItems.findIndex((element) => element.Id === clickedOn);
+          value = cartItems.findIndex((element) => element.Id === clickedOn && element.ColorName === clickedColor);
           return value;
         }
       });
@@ -31,7 +32,7 @@ export default function ShoppingCart() {
   });
 }
 
-function cartItemTemplate(item) {
+function cartItemTemplate(item) {  
   const newItem = `<li class="cart-card divider">
       <a href="#" class="cart-card__image">
         <img
@@ -42,14 +43,14 @@ function cartItemTemplate(item) {
       <a href="#">
         <h2 class="card__name">${item.Name}</h2>
       </a>
-      <p class="cart-card__color">${item.Colors[0].ColorName}</p>
+      <p class="cart-card__color">Color: ${item.Colors[0].ColorName}</p>
       <span class="cart-card__remover" id="${item.Id}">&#10006</a></span>
-      <button class="addButton" id="${item.Id}">&#x002B</button>
+      <button class="addButton" id="${item.Id}" name="${item.Colors[0].ColorName}">&#x002B</button>
       <p class="cart-card__quantity">qty:${item.Quantity}</p>
       <p class="cart-card__price">$${(item.FinalPrice * item.Quantity).toFixed(
         2
       )}</p>
-      <button class="minusButton" id="${item.Id}">&#x2212</button>
+      <button class="minusButton" id="${item.Id}" name="${item.Colors[0].ColorName}">&#x2212</button>
     </li>`;
 
   return newItem;
@@ -62,11 +63,12 @@ export function cartTotal() {
   //setting the cart total to zero
   let totalCart = 0;
   //looping through to make sure that it adds all items in localStorage to add their final prices
-
-  cart.forEach((item) => {
-    totalCart += item.FinalPrice * item.Quantity;
-    return totalCart;
-  });
+  
+    cart.forEach((item) => {
+      totalCart += item.FinalPrice * item.Quantity;
+      return totalCart;
+    });
+  
   //checking the total in my cart. If not 0, then display the total of the cart
   document.querySelector(
     ".cart-total"
@@ -76,35 +78,43 @@ cartTotal();
 
 function addQuantity() {
   const cart = getLocalStorage("so-cart");
-  document.addEventListener("click", function (e) {
-    if (e.target.classList.contains("addButton")) {
-      let add = e.target.id;
-      let index = cart.findIndex((item) => item.Id == add);
-      let quantity = cart[index].Quantity;
-      quantity++;
-      cart[index].Quantity = quantity;
-      setLocalStorage("so-cart", cart);
-      document.location.reload();
-    }
-  });
+    document.addEventListener("click", function (e) {
+      if (e.target.classList.contains("addButton")) {
+        let add = e.target.id;
+        let color = e.target.name;
+        console.log(color);
+        let index = cart.findIndex((item) => item.Id == add && item.Colors[0].ColorName == color);
+        console.log(index);
+        
+        let quantity = cart[index].Quantity;
+        quantity++;
+        cart[index].Quantity = quantity;
+        setLocalStorage("so-cart", cart);
+        document.location.reload();
+      }
+    });
+  
 }
 
 function minusQuantity() {
   const cart = getLocalStorage("so-cart");
-  document.addEventListener("click", function (e) {
-    if (e.target.classList.contains("minusButton")) {
-      let minus = e.target.id;
-      let index = cart.findIndex((item) => item.Id == minus);
-      let quantity = cart[index].Quantity;
-      --quantity;
-      cart[index].Quantity = quantity;
-      if (quantity == 0) {
-        cart.splice(index, 1);
+  
+    document.addEventListener("click", function (e) {
+      if (e.target.classList.contains("minusButton")) {
+        let minus = e.target.id;
+        let color = e.target.name;
+        let index = cart.findIndex((item) => item.Id == minus && item.Colors[0].ColorName == color);
+        let quantity = cart[index].Quantity;
+        --quantity;
+        cart[index].Quantity = quantity;
+        if (quantity == 0) {
+          cart.splice(index, 1);
+        }
+        setLocalStorage("so-cart", cart);
+        document.location.reload();
       }
-      setLocalStorage("so-cart", cart);
-      document.location.reload();
-    }
-  });
+    });
+  
 }
 
 addQuantity();
