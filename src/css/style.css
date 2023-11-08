@@ -246,6 +246,10 @@ span:hover {
   padding-left: 0;
 }
 
+.recommended-products {
+  justify-content: center;
+}
+
 .product-list li,
 .product-list-header li,
 .recommended-products li {
