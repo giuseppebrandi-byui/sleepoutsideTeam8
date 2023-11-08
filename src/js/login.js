@@ -7,7 +7,7 @@ const headerFooter = async () => {
 
 headerFooter();
 const redirectAddress = getParam("redirect");
-console.log(redirectAddress);
+console.log("redirectAddress: ", redirectAddress);
 
 const loginBtn = document.querySelector(".loginBtn");
 
@@ -15,6 +15,5 @@ loginBtn.addEventListener("click", (e) => {
   e.preventDefault();
   const emailValue = document.querySelector("#loginEmail").value;
   const passwordValue = document.querySelector("#loginPassword").value;
-  // console.log(emailValue, passwordValue);
-  login({ emailValue, passwordValue }, redirectAddress);
+  login({ email: emailValue, password: passwordValue }, redirectAddress);
 });

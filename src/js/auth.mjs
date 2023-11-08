@@ -6,12 +6,17 @@ const tokenKey = "so-token";
 
 export async function login(creds, redirect = "/") {
   try {
+    if (!redirect) redirect = "/";
+    console.log("redirect: " + redirect.toString());
     const token = await loginRequest(creds);
     setLocalStorage(tokenKey, token);
     // because of the default arg provided above...if no redirect is provided send them Home.
+    if (redirect == "/") {
+      window.location = redirect;
+    }
     window.location = redirect;
   } catch (err) {
-    alertMessage(err.message.message);
+    alertMessage(err.message);
   }
 }
 
@@ -20,6 +25,7 @@ export function checkLogin() {
   const valid = isTokenValid(token);
   if (!valid) {
     localStorage.removeItem(tokenKey);
+
     const location = window.location;
     console.log(location);
     window.location = `/login/index.html?redirect=${location.pathname}`;

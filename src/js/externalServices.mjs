@@ -30,6 +30,7 @@ export async function findProductById(id) {
   const product = await convertToJson(response);
   return product.Result;
 }
+
 export async function checkout(payload) {
   const options = {
     method: "POST",
@@ -45,6 +46,7 @@ export async function checkout(payload) {
 }
 
 export async function loginRequest(creds) {
+  console.log(creds);
   const options = {
     method: "POST",
     headers: {
@@ -56,4 +58,17 @@ export async function loginRequest(creds) {
   // if (!baseURL.endsWith("/")) callUrl += "/";
   const response = await fetch(baseURL + "login", options).then(convertToJson);
   return response.accessToken;
+}
+
+export async function getOrders(token) {
+  const options = {
+    method: "GET",
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+
+  let callUrl = baseURL;
+  if (!baseURL.endsWith("/")) callUrl += "/";
+  return await fetch(callUrl + "orders", options).then(convertToJson);
 }

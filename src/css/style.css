@@ -105,7 +105,6 @@ button {
 .alert-list {
   padding: 15px;
   border-radius: 4px;
- 
 }
 
 .closeBtn {
@@ -231,11 +230,13 @@ span:hover {
 }
 .products,
 .recommended,
-.products-header {
+.products-header,
+.orders-header {
   padding: 0.5em;
 }
 .product-list,
 .product-list-header,
+.orders-list,
 .recommended-products {
   display: flex;
   flex-flow: row wrap;
@@ -244,8 +245,6 @@ span:hover {
   max-width: 1350px;
   padding-left: 0;
 }
-
-
 
 .product-list li,
 .product-list-header li,
@@ -267,10 +266,8 @@ li.product-card {
   flex-flow: column wrap;
 }
 
-
 .product-card,
 .product-card-header {
-
   flex: 1 1 45%;
   margin: 0.25em;
   padding: 0.5em;
@@ -335,8 +332,6 @@ li.product-card {
   z-index: 10;
   text-shadow: 1px 0.5px 0.5px #000;
 }
-
-
 
 /* Start cart list card styles */
 .product-category {
@@ -799,5 +794,4 @@ form input {
 footer {
   font-size: var(--small-font);
   padding: 1em;
-
 }
