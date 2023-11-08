@@ -616,6 +616,21 @@ input#filterInput {
 
 .login-form {
   margin: 4rem auto;
+  padding-top: 2rem;
+  max-width: 30rem;
+}
+
+.form-control {
+  display: flex;
+  flex-direction: column;
+}
+
+.top {
+  margin-bottom: 0.5rem;
+}
+
+.form-control input {
+  padding: 0.75rem;
 }
 
 form input {
@@ -802,7 +817,6 @@ footer {
   padding: 1em;
 }
 /* order page formatting*/
-#orders{
+#orders {
   text-align: center;
-
 }
