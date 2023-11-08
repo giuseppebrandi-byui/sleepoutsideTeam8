@@ -10,9 +10,23 @@
   <body>
     <header class="divider" id="main-header"></header>
     <main class="divider">
+      <h2>Current Orders</h2>
       <section class="orders-header">
-        <ul class="orders-list"></ul>
-        <ul id="all-orders"></ul>
+        <table id="orders">
+          <thead>
+            <tr>
+              <th>Id</th>
+              <th>Date</th>
+              <th>Address</th>
+              <th>State</th>
+              <th>Zipcode</th>
+              <th>Id & Quantities</th>
+              <th>Total Items</th>
+              <th>Total</th>
+            </tr>
+          </thead>
+          <tbody class="order-body"></tbody>
+        </table>
       </section>
     </main>
     <footer id="main-footer"></footer>
