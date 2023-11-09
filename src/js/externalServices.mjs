@@ -10,16 +10,15 @@ async function convertToJson(res) {
 }
 
 export async function getProductsByCategory(category) {
-  if (baseURL.endsWith("/")){
+  if (baseURL.endsWith("/")) {
     const response = await fetch(baseURL + `products/search/${category}`);
     const data = await convertToJson(response);
     return data.Result;
-  } 
+  }
   const response = await fetch(baseURL + "/" + `products/search/${category}`);
   const data = await convertToJson(response);
   return data.Result;
 }
-
 
 export async function findProductById(id) {
   if (baseURL.endsWith("/")) {
@@ -31,18 +30,45 @@ export async function findProductById(id) {
   const product = await convertToJson(response);
   return product.Result;
 }
-export async function checkout(payload) {
-    const options = {
-      method: "POST",
-      headers: {
-        "Content-type": "application/json",
-      },
-      body: JSON.stringify(payload),
-    };
 
-     let callUrl = baseURL;
-     if (!baseURL.endsWith("/"))
-     callUrl += "/";
-    return await fetch(callUrl + "checkout", options).then(convertToJson);
-    
+export async function checkout(payload) {
+  const options = {
+    method: "POST",
+    headers: {
+      "Content-type": "application/json",
+    },
+    body: JSON.stringify(payload),
+  };
+
+  let callUrl = baseURL;
+  if (!baseURL.endsWith("/")) callUrl += "/";
+  return await fetch(callUrl + "checkout", options).then(convertToJson);
+}
+
+export async function loginRequest(creds) {
+  console.log(creds);
+  const options = {
+    method: "POST",
+    headers: {
+      "Content-type": "application/json",
+    },
+    body: JSON.stringify(creds),
+  };
+  // let callUrl = baseURL;
+  // if (!baseURL.endsWith("/")) callUrl += "/";
+  const response = await fetch(baseURL + "login", options).then(convertToJson);
+  return response.accessToken;
+}
+
+export async function getOrders(token) {
+  const options = {
+    method: "GET",
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+
+  let callUrl = baseURL;
+  if (!baseURL.endsWith("/")) callUrl += "/";
+  return await fetch(callUrl + "orders", options).then(convertToJson);
 }

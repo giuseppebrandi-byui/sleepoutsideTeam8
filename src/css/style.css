@@ -230,11 +230,13 @@ span:hover {
 }
 .products,
 .recommended,
-.products-header {
+.products-header,
+.orders-header {
   padding: 0.5em;
 }
 .product-list,
 .product-list-header,
+.orders-list,
 .recommended-products {
   display: flex;
   flex-flow: row wrap;
@@ -242,6 +244,10 @@ span:hover {
   list-style-type: none;
   max-width: 1350px;
   padding-left: 0;
+}
+
+.recommended-products {
+  justify-content: center;
 }
 
 .product-list li,
@@ -330,6 +336,7 @@ li.product-card {
   z-index: 10;
   text-shadow: 1px 0.5px 0.5px #000;
 }
+
 .color-swatches {
   display: flex;
   flex-wrap: row;
@@ -615,10 +622,30 @@ input#filterInput {
   opacity: 0;
 }
 
-.wrapper form {
+.wrapper form,
+.login-form {
   display: flex;
   flex-direction: column;
   gap: 20px;
+}
+
+.login-form {
+  margin: 4rem auto;
+  padding-top: 2rem;
+  max-width: 30rem;
+}
+
+.form-control {
+  display: flex;
+  flex-direction: column;
+}
+
+.top {
+  margin-bottom: 0.5rem;
+}
+
+.form-control input {
+  padding: 0.75rem;
 }
 
 form input {
@@ -633,7 +660,8 @@ form input {
   background: #fff;
 }
 
-.signupBtn {
+.signupBtn,
+.loginBtn {
   margin-top: 15px;
   background-color: var(--secondary-color);
   color: #fff;
@@ -802,4 +830,9 @@ form input {
 footer {
   font-size: var(--small-font);
   padding: 1em;
+}
+
+/* order page formatting*/
+#orders {
+  text-align: center;
 }
