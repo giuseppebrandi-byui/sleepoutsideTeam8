@@ -44,16 +44,35 @@ export function addToCart() {
   cart = cart ? getLocalStorage("so-cart") : [];
   //check if product is in the cart, if not add product
   let p = product.Id;
+  let c = document.querySelector(".product__color").getAttribute("name");
   let found = cart.some((item) => item.Id == p);
   if (found) {
-    let index = cart.findIndex((item) => item.Id == product.Id);
-    let quantity = cart[index].Quantity;
-    quantity++;
-    cart[index].Quantity = quantity;
-  } else {
+    let colors = cart.some((item) => item.ColorName == c);
+    if (colors) {
+      let index = cart.findIndex((item) => item.Id == product.Id);
+      let quantity = cart[index].Quantity;
+      quantity++;
+      cart[index].Quantity = quantity;
+    }
+    else {
+      product.Quantity = 1;
+      console.log(product);
+      const sorted = product.Colors.filter(item => item.ColorName === c);
+      console.log(sorted);
+      
+      product.Colors = sorted;
+      console.log(product);
+      cart.push(product);
+    }
+  } if (!found) {
     product.Quantity = 1;
-    cart.push(product);
+      console.log(product);
+      const sorted = product.Colors.filter(item => item.ColorName === c);
+      product.Colors = sorted;
+      cart.push(product);
   }
+   
+ 
   setLocalStorage("so-cart", cart);
 
   cartCounter(); 
@@ -64,11 +83,10 @@ export function addToCart() {
 function renderProductDetails() {
   const largeScreen = window.matchMedia("(min-width: 768px)");
   const mediumScreen = window.matchMedia("(min-width: 320px)");
+ 
   document.querySelector(".product-category").innerText =
 
-    product.Category.replace("-", " ").replace(/(?:^|\s)\S/g, a => a.toUpperCase())
-      
-
+    product.Category.replace("-", " ").replace(/(?:^|\s)\S/g, a => a.toUpperCase());
 
   document.querySelector("#productName").innerText = product.Brand.Name;
   document.querySelector("#productNameWithoutBrand").innerText =
@@ -93,8 +111,27 @@ function renderProductDetails() {
   document.querySelector("#productSavings").innerText = `You save $${(
     product.SuggestedRetailPrice - product.FinalPrice
   ).toFixed(2)}`;
-  document.querySelector("#productColorName").innerText =
-    product.Colors[0].ColorName;
+  document.querySelector("#productColorName").innerText = `Color: ${product.ColorName}`;
+  const colors = product.Colors;
+  colors.forEach(item => {
+    document.querySelector("#productColorName").innerText = `Color: ${item.ColorName}`;
+    
+    let swatch = document.createElement("img");
+    document.querySelector(".color-swatches").appendChild(swatch);
+    
+    swatch.src = item.ColorChipImageSrc;
+    swatch.addEventListener("click", function (e) {
+      document.querySelector("#productColorName").innerText =
+        `Color: ${item.ColorName}`;
+      document.querySelector("#productImage").src = item.ColorPreviewImageSrc;
+      document.querySelector("#productColorName").setAttribute("name", item.ColorName);
+    })
+    
+    
+    
+  })  
+   
+  
   document.querySelector("#productDescriptionHtmlSimple").innerHTML =
     product.DescriptionHtmlSimple;
   document.querySelector("#addToCart").dataset.id = product.Id;
