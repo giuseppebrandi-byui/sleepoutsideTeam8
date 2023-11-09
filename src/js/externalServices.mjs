@@ -54,9 +54,9 @@ export async function loginRequest(creds) {
     },
     body: JSON.stringify(creds),
   };
-  // let callUrl = baseURL;
-  // if (!baseURL.endsWith("/")) callUrl += "/";
-  const response = await fetch(baseURL + "login", options).then(convertToJson);
+  let callUrl = baseURL;
+  if (!baseURL.endsWith("/")) callUrl += "/";
+  const response = await fetch(callUrl + "login", options).then(convertToJson);
   return response.accessToken;
 }
 
