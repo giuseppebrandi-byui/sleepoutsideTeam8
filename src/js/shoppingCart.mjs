@@ -63,12 +63,12 @@ export function cartTotal() {
   //setting the cart total to zero
   let totalCart = 0;
   //looping through to make sure that it adds all items in localStorage to add their final prices
-  
+  if (cart != null) {
     cart.forEach((item) => {
       totalCart += item.FinalPrice * item.Quantity;
       return totalCart;
     });
-  
+  }
   //checking the total in my cart. If not 0, then display the total of the cart
   document.querySelector(
     ".cart-total"

@@ -57,19 +57,29 @@ export function addToCart() {
     else {
       product.Quantity = 1;
       console.log(product);
-      const sorted = product.Colors.filter(item => item.ColorName === c);
-      console.log(sorted);
-      
+      if (product.Colors.length >= 2) {
+        const sorted = product.Colors.filter(item => item.ColorName === c);
+        console.log(sorted);
       product.Colors = sorted;
       console.log(product);
       cart.push(product);
+      } else {
+        cart.push(product);
     }
+}
   } if (!found) {
-    product.Quantity = 1;
+      product.Quantity = 1;
       console.log(product);
-      const sorted = product.Colors.filter(item => item.ColorName === c);
-      product.Colors = sorted;
+    if (product.Colors.length >= 2) {
+        const sorted = product.Colors.filter(item => item.ColorName === c);
+        product.Colors = sorted;
+        cart.push(product);
+    } else {
       cart.push(product);
+      }
+    
+    
+     
   }
    
  
