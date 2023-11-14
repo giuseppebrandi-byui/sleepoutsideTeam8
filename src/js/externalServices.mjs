@@ -72,3 +72,32 @@ export async function getOrders(token) {
   if (!baseURL.endsWith("/")) callUrl += "/";
   return await fetch(callUrl + "orders", options).then(convertToJson);
 }
+
+export async function accountRequest(info) {
+  console.log(info);
+  const options = {
+    method: "POST",
+    headers: {
+      "Content-type": "application/json",
+    },
+    body: JSON.stringify(info),
+  };
+  let callUrl = baseURL;
+  if (!baseURL.endsWith("/")) callUrl += "/";
+  const response = await fetch(callUrl + "login/users", options).then(convertToJson);
+  return response.accessToken;
+}
+
+export async function newAccount(payload) {
+  const options = {
+    method: "POST",
+    headers: {
+      "Content-type": "application/json",
+    },
+    body: JSON.stringify(payload),
+  };
+
+  let callUrl = baseURL;
+  if (!baseURL.endsWith("/")) callUrl += "/";
+  return await fetch(callUrl + "users", options).then(convertToJson);
+}

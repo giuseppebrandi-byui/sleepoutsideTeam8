@@ -78,6 +78,12 @@ header {
 .logo--square > div {
   margin-top: -1.7em;
 }
+.userAccount {
+  margin-right: 0.5em;
+  margin-top: 0.5em;
+  stroke: black;
+  stroke-width: 30pt;
+}
 /* utility classes */
 .highlight {
   color: var(--tertiary-color);
@@ -591,7 +597,7 @@ input#filterInput {
   max-width: 420px;
   width: 100%;
   border-radius: 12px;
-  padding: 20px 30px 70px;
+  padding: 20px 30px 300px;
   background: var(--primary-color);
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease-in-out;
@@ -625,8 +631,13 @@ input#filterInput {
 .wrapper form,
 .login-form {
   display: flex;
+
   flex-direction: column;
-  gap: 20px;
+
+  gap: 10px;
+}
+#new-account {
+  text-align: center;
 }
 
 .login-form {
@@ -649,7 +660,7 @@ input#filterInput {
 }
 
 form input {
-  height: 60px;
+  height: 50px;
   outline: none;
   border: none;
   padding: 0 15px;
@@ -698,13 +709,16 @@ form input {
 
 .header-btn-wrapper {
   display: flex;
-  justify-content: space-between;
+  justify-content: right;
+  height: 45px;
 }
 
 .ModalCloseBtn,
-.signUpCloseBtn {
-  font-size: 2rem;
+.signUpCloseBtn,
+.registerBtn {
+  font-size: 1.5rem;
   margin-bottom: 2rem;
+  text-decoration: none;
 }
 
 .free-pass {
@@ -834,5 +848,87 @@ footer {
 
 /* order page formatting*/
 #orders {
+  text-align: center;
+}
+/* account setup form*/
+.accountForm {
+  display: block;
+  max-width: 800px;
+  padding: 2em;
+  margin: auto;
+}
+
+form.account {
+  display: flex;
+  justify-content: start;
+  flex-direction: column;
+  flex-wrap: wrap;
+  row-gap: 10px;
+  flex-grow: 1;
+}
+.account label {
+  display: block;
+}
+.account label.street {
+  order: 0;
+}
+.account label {
+  display: block;
+  padding-top: 0.5rem;
+  color: #000;
+  font-size: 1rem;
+  text-align: left;
+}
+
+.account input {
+  display: flex;
+  font-size: 1.2rem;
+  border: solid 1px #999;
+  border-radius: 4px;
+  padding: 0.75rem;
+  color: #555;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+.discount-wrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 420px;
+  width: 100%;
+  border-radius: 12px;
+  padding: 20px 30px 30px;
+  background: var(--primary-color);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease-in-out;
+  overflow: hidden;
+}
+
+.discount-wrapper.active .form.signup {
+  bottom: 0%;
+  border-radius: 16%;
+  box-shadow: 0 -5px 10px rgba(0, 0, 0, 0.1);
+}
+
+.form header,
+.freebie header {
+  font-size: 30px;
+  color: #333;
+  font-weight: bold;
+  margin-bottom: 40px;
+  text-align: center;
+  cursor: pointer;
+}
+.header-wrapper {
+  display: flex;
+  justify-content: space-around;
+  height: 45px;
+}
+.freebie h1{
+  line-height: 25px;
+  text-align: center;
+}
+.freebie p{
   text-align: center;
 }
